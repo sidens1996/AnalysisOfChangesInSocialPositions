@@ -3706,7 +3706,7 @@ $(function () {
         option4.series[0].maskImage
         myChart4.setOption(option4);
     }
-    maskImage.src = '../img/computer.jpg';
+    maskImage.src = '/position/img/apple.jpg';
     window.onresize = function () {
         myChart4.resize();
     }

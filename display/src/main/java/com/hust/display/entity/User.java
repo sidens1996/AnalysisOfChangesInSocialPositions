@@ -9,6 +9,7 @@ public class User {
 
     @Id
     @GeneratedValue
+    private Integer userid;         //用户id
     private String userName;        //用户名
     private String passWord;        //密码
     private String sex;             //性别
@@ -20,6 +21,13 @@ public class User {
     private String profession;      //专业
     private String role;            //角色
     private String status;          //状态
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+    public Integer getUserid() {
+        return userid;
+    }
 
     public void setUserName(String userName) {
         this.userName = userName;

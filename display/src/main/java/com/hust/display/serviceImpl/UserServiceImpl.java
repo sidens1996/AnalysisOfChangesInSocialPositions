@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImpl extends UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
@@ -30,12 +30,12 @@ public class UserServiceImpl extends UserService {
     }
 
     @Override
-    public void deleteUser(User user) {
-        userRepository.delete(user);
+    public void deleteUser(Integer userid) {
+        userRepository.deleteById(userid);
     }
 
     @Override
-    public User getUserByName(String userName) {
-        return userRepository.;
+    public User getUserByID(Integer userid) {
+        return userRepository.findById(userid).get();
     }
 }

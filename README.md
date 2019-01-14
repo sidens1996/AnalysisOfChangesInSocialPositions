@@ -1,2 +1,1 @@
 # AnalysisOfChangesInSocialPositions
-ÐÞ¸Ä

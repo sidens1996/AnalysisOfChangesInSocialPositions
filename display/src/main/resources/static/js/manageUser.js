@@ -43,9 +43,3 @@ $(function () {
         }
     });
 });
-
-// //将addmodel里的数据上传到数据库
-// $(function () {
-//     $('#addModal').
-//
-// })

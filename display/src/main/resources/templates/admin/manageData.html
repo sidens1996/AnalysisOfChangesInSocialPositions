@@ -1,5 +1,8 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<!--suppress ThymeleafVariablesResolveInspection -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +51,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">管理员</a>
                             <div class="dropdown-menu text-center">
                                 <a class="dropdown-item" href="#">个人中心 <i class="fa fa-user-secret"></i> </a>
-                                <a class="dropdown-item" href="login.html"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>
+                                <a class="dropdown-item" href="/admin/login"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>
                             </div>
                         </li>
                     </ul>
@@ -88,6 +91,7 @@
                         </div>
                         <div class="row">
                             <table class="table table-hover table-bordered text-center">
+                                <thead>
                                 <tr>
                                     <th><input id="selectall" type="checkbox"></th>
                                     <th width="130">职位名称</th>
@@ -102,48 +106,23 @@
                                     <th width="130">发布时间</th>
                                     <th width="100">操作</th>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" ></td>
-                                    <td>java工程师</td>
-                                    <td>20k-30k</td>
-                                    <td>武汉</td>
-                                    <td>10年以上</td>
-                                    <td>硕士</td>
-                                    <td>互联网,软件工程，金融</td>
-                                    <td>物联网，教育，金融</td>
-                                    <td>不需要融资</td>
-                                    <td>50-150人</td>
-                                    <td>2018-12-30</td>
+                                </thead>
+                                <tbody>
+                                <tr th:each="job : ${jobs}">
+                                    <td><input type="checkbox" data-id="${job.urlObjectID}"></td>
+                                    <td th:text="${job.jobName}">java工程师</td>
+                                    <td th:text="${job.salary}">20k-30k</td>
+                                    <td th:text="${job.jobCity}">武汉</td>
+                                    <td th:text="${job.workYears}">10年以上</td>
+                                    <td th:text="${job.degreeNeed}">硕士</td>
+                                    <td th:text="${job.jobDescription}">互联网,软件工程，金融</td>
+                                    <td th:text="${job.companyField}">物联网，教育，金融</td>
+                                    <td th:text="${job.companyDevelopment}">不需要融资</td>
+                                    <td th:text="${job.companyScale}">50-150人</td>
+                                    <td th:text="${job.publishTime}">2018-12-30</td>
                                     <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" ></td>
-                                    <td>jobname</td>
-                                    <td>salary</td>
-                                    <td>city</td>
-                                    <td>workyears</td>
-                                    <td>degree</td>
-                                    <td>tags</td>
-                                    <td>field</td>
-                                    <td>development</td>
-                                    <td>scale</td>
-                                    <td>publish</td>
-                                    <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" ></td>
-                                    <td>jobname</td>
-                                    <td>salary</td>
-                                    <td>city</td>
-                                    <td>workyears</td>
-                                    <td>degree</td>
-                                    <td>tags</td>
-                                    <td>field</td>
-                                    <td>development</td>
-                                    <td>scale</td>
-                                    <td>publish</td>
-                                    <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
-                                </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div>

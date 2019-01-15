@@ -1,5 +1,8 @@
-<!doctype html>
-<html>
+<!DOCTYPE html >
+<!--suppress ThymeleafVariablesResolveInspection -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>百度的Js日历，值得一看</title>
@@ -57,7 +60,7 @@
                 </div></td>
         </tr>
     </table>
-    <script type="text/javascript">
+    <script th:inline="none" type="text/javascript">
         <!--
         (function() {
             var S = navigator.userAgent.indexOf("MSIE") != -1 && !window.opera;

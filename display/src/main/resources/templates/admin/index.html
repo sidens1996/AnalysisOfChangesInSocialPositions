@@ -1,5 +1,8 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<!--suppress ThymeleafVariablesResolveInspection -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -116,7 +119,8 @@
                                 </a>
                             </div>
                         </div>
-                        <iframe class="col-lg-6" style="background-color: transparent;" src="/admin/calendar" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        <iframe class="col-lg-6" style="background-color: transparent;" th:replace="admin/calendar::html"
+                                frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                     </div>
                 </div>
             </section>

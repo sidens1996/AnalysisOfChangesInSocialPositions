@@ -110,7 +110,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="user : ${user}">
+                                <tr th:each="user : ${users}">
                                     <td><input type="checkbox" data-id="${user.userid}"></td>
                                     <!--th scope="row" th:text="${user.userid}">1</th-->
                                     <td th:text="${user.userName}">username</td>

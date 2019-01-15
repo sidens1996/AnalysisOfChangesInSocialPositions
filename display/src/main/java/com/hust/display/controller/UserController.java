@@ -3,6 +3,7 @@ package com.hust.display.controller;
 import com.hust.display.entity.User;
 import com.hust.display.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,14 +32,19 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @PostMapping("/del/{id}")
-    void deleteUser(Integer userid){
-        userService.deleteUser(userid);
+    @PostMapping("/del/{userName}")
+    void deleteUser(@PathVariable("userName") String userName){
+        userService.deleteUser(userName);
     }
 
-    @PostMapping("/getbyid/{id}")
-    User getUserByID(Integer userid){
-        return userService.getUserByID(userid);
+//    @PostMapping("/delid/{userid}")
+//    void deleteByID(@PathVariable("userid")Integer userid){
+//        userService.deleteByID(userid);
+//    }
+
+    @PostMapping("/getbyname/{userName}")
+    User getUserByID(@PathVariable("userName")String userName){
+        return userService.getUserByName(userName);
     }
 
 }

@@ -2,6 +2,7 @@ package com.hust.display.service;
 
 import com.hust.display.entity.User;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface UserService {
@@ -12,8 +13,10 @@ public interface UserService {
 
     User updateUser(User user);
 
-    void deleteUser(Integer userid);
+    void deleteUser(String userName);
 
-    User getUserByID(Integer userid);
+    //void deleteByID(Integer userid);
+
+    User getUserByName(String userName);
 }
 

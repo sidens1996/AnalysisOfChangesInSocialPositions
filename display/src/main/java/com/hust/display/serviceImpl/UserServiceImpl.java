@@ -30,12 +30,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Integer userid) {
-        userRepository.deleteById(userid);
+    public void deleteUser(String userName) {
+        userRepository.deleteUser(userName);
     }
 
+//    @Override
+//    public void deleteByID(Integer userid) {
+//        userRepository.deleteById(userid);
+//    }
+
     @Override
-    public User getUserByID(Integer userid) {
-        return userRepository.findById(userid).get();
+    public User getUserByName(String userName) {
+        return userRepository.getUserByName(userName);
     }
 }

@@ -7,6 +7,7 @@ import com.hust.display.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -33,12 +34,25 @@ public class AdminPageController {
         return "/admin/manageUser";
     }
 
+    @RequestMapping("/addUser")
+    public String addUser(User user){
+        userService.addUser(user);
+        return "redirect:/admin/manageUser";
+    }
+
+    @RequestMapping("/delete/{userName}")
+    public String deleteByName(@PathVariable("userName")String userName){
+        userService.deleteByName(userName);
+        return "redirect:/admin/manageUser";
+    }
+
     @RequestMapping("/manageData")
     public String dataManagement(Model model){
         List<Job> lists = jobService.getAllJob();
         model.addAttribute("jobs",lists);
         return "/admin/manageData";
     }
+
 
 
     @RequestMapping("/login")

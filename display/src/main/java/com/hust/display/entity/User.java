@@ -1,5 +1,6 @@
 package com.hust.display.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,8 +11,10 @@ public class User {
     @Id
     @GeneratedValue
     private Integer userid;         //用户id
+    @Column(unique = true)
     private String userName;        //用户名
     private String passWord;        //密码
+    private String realName;        //真实姓名
     private String sex;             //性别
     private int age;                //年龄
     private String email;           //email
@@ -21,6 +24,7 @@ public class User {
     private String profession;      //专业
     private String role;            //角色
     private String status;          //状态
+    private String description;     //描述
 
     public void setUserid(Integer userid) {
         this.userid = userid;
@@ -41,6 +45,13 @@ public class User {
     }
     public String getPassWord() {
         return passWord;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+    public String getRealName() {
+        return realName;
     }
 
     public void setSex(String sex) {
@@ -104,5 +115,12 @@ public class User {
     }
     public String getWorkyears() {
         return workyears;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

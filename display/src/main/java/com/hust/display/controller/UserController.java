@@ -32,10 +32,10 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @PostMapping("/del/{userName}")
-    void deleteUser(@PathVariable("userName") String userName){
-        userService.deleteUser(userName);
-    }
+//    @PostMapping("/del/{userName}")
+//    void deleteUser(@PathVariable("userName") String userName){
+//        userService.deleteUser(userName);
+//    }
 
 //    @PostMapping("/delid/{userid}")
 //    void deleteByID(@PathVariable("userid")Integer userid){

@@ -120,7 +120,7 @@
                                     <td th:text="${job.companyDevelopment}">不需要融资</td>
                                     <td th:text="${job.companyScale}">50-150人</td>
                                     <td th:text="${job.publishTime}">2018-12-30</td>
-                                    <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
+                                    <td><a href="#"><i class="fa fa-wrench" data-toggle="modal" data-target="#updateModal"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -166,6 +166,7 @@
         </div>
     </div>
 </div>
+
 <!--updateModal-->
 <div class="modal fade" id="updateModal" tabindex="-1">
     <div class="modal-dialog">

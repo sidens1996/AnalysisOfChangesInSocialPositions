@@ -43,3 +43,32 @@ $(function () {
         }
     });
 });
+
+// //提交新增用户数据
+// $(function () {
+//     $('#addModal').on("submit",function (e) {
+//         var username = document.getElementsByName("username").value
+//         var password = document.getElementsByName("password").value
+//         var realName = document.getElementsByName("realname").value
+//         var sex = document.getElementsByName("gender").value
+//
+//         var data = $("#addUser").serialize()
+//         var submitData = decodeURIComponent(data,true)
+//
+//         $.ajax({
+//             url:"",
+//             data:submitData,
+//             cache:false,
+//             async:true,
+//             success:function (data,textStatus,jqXHR) {
+//
+//             },
+//
+//             error:function (jqXHR,status,error) {
+//                 console.log(status)
+//             }
+//         })
+//
+//
+//     })
+// })

@@ -126,7 +126,8 @@
                                     <td th:text="${user.profession}">profession</td>
                                     <td th:text="${user.role}">role</td>
                                     <td th:text="${user.status}">status</td>
-                                    <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
+                                    <td><a href="#"><i class="fa fa-wrench" data-toggle="modal" data-target="#updateModal"></i></a> |
+                                        <a th:href="@{'/admin/delete/'+${user.userName}}"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -177,7 +178,7 @@
 <div class="modal fade" id="addModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="#" method="post">
+            <form action="/admin/addUser" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">新增用户</h5>
                     <button type="button" class="close" data-dismiss="modal">
@@ -187,24 +188,24 @@
                 <div class="modal-body">
                     <div class="form-row">
                         <label class="col-3 offset-1 h5">用户名:</label>
-                        <input class="col-6 form-control" type="text" name="username" required="required">
+                        <input class="col-6 form-control" type="text" name="userName" required="required" value="${user.userName}">
                     </div>
                     <div class="form-row mt-3">
                         <label class="col-3 offset-1 h5">密码:</label>
-                        <input class="col-6 form-control" type="password" name="password" required="required">
+                        <input class="col-6 form-control" type="password" name="passWord" required="required">
                     </div>
                     <div class="form-row mt-3">
                         <label class="col-3 offset-1 h5">真实姓名:</label>
-                        <input class="col-6 form-control" type="text" name="realname">
+                        <input class="col-6 form-control" type="text" name="realName">
                     </div>
                     <div class="form-row mt-3">
                         <label class="col-3 offset-1 h5">性别:</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="addradio1" value="男">
+                            <input class="form-check-input" type="radio" name="sex" id="addradio1" value="男">
                             <label class="form-check-label" for="addradio1">男</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="addradio2" value="女">
+                            <input class="form-check-input" type="radio" name="sex" id="addradio2" value="女">
                             <label class="form-check-label" for="addradio2">女</label>
                         </div>
                     </div>
@@ -273,11 +274,12 @@
         </div>
     </div>
 </div>
+
 <!--updateModal-->
 <div class="modal fade" id="updateModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="#" method="post">
+            <form action="/admin/manageUser" method="post" id="addUser">
                 <div class="modal-header">
                     <h5 class="modal-title">编辑用户</h5>
                     <button type="button" class="close" data-dismiss="modal">
@@ -295,7 +297,7 @@
                     </div>
                     <div class="form-row mt-3">
                         <label class="col-3 offset-1 h5">真实姓名:</label>
-                        <input class="col-6 form-control" type="text" name="realname">
+                        <input class="col-6 form-control" type="text" name="realname" >
                     </div>
                     <div class="form-row mt-3">
                         <label class="col-3 offset-1 h5">性别:</label>

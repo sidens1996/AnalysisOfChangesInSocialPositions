@@ -2,7 +2,6 @@ package com.hust.display.service;
 
 import com.hust.display.entity.User;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 public interface UserService {

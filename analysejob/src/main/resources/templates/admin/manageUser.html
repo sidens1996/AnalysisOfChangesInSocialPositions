@@ -48,7 +48,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" th:text="${session.userMessage.username}">管理员</a>
                             <div class="dropdown-menu text-center">
                                 <a class="dropdown-item" href="#">个人中心 <i class="fa fa-user-secret"></i> </a>
-                                <a class="dropdown-item" href="login.html"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>
+                                <a class="dropdown-item" href="login.html" th:href="@{/admin/logout}"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>
                             </div>
                         </li>
                     </ul>
@@ -124,7 +124,7 @@
                             </table>
                         </div>
                         <div>
-                            <p>每页<span class="text-primary">10</span>条，共<span class="text-primary" th:text="${totalPages}"></span>页</p>
+                            <p>每页<span class="text-primary">10</span>条，共<span class="text-primary" th:text="${totalPages}">1</span>页</p>
                         </div>
                     </div>
                     <nav class="mt-3">
@@ -141,7 +141,7 @@
                             </li>
                             <!--主体动态加载-->
                             <li class="page-item" th:each="page : ${pages}" th:class="(${page} == ${currentPage})? 'page-item active': ((${page} == 0) ? 'page-item disabled':'page-item')">
-                                <a class="page-link" href="#" th:href="@{/admin/manageUser(page=${page}, keyword=${keyword})}" th:text="${page}">1</a>
+                                <a class="page-link" href="#" th:href="@{/admin/manageUser(page=${page}, keyword=${keyword})}" th:text="(${page} == 0) ? '...': ${page}">1</a>
                             </li>
                             <!--下一页-->
                             <li class="page-item">
@@ -235,11 +235,12 @@
                         <label class="col-3 offset-1 h5">工作经验:</label>
                         <select class="col-6 form-control" name="workyears">
                             <option value="">--选择工作经验--</option>
-                            <option value="应届毕业生">应届毕业生</option>
-                            <option value="3年及以下">3年及以下</option>
-                            <option value="3-5年">3-5年</option>
-                            <option value="5-10年">5-10年</option>
-                            <option value="5-10年">10年以上</option>
+                            <option value="经验应届毕业生">经验应届毕业生</option>
+                            <option value="经验1年以下">经验1年以下</option>
+                            <option value="经验1-3年">经验1-3年</option>
+                            <option value="经验3-5年">经验3-5年</option>
+                            <option value="经验5-10年">经验5-10年</option>
+                            <option value="经验10年以上">经验10年以上</option>
                         </select>
                     </div>
                     <div class="form-row mt-3">

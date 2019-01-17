@@ -78,7 +78,7 @@ $(function () {
                 var uids = ""
                 for (var i = 0; i < $checkboxs.length; i++) {
                     uids += $checkboxs.eq(i).attr("data-id") + ","
-                    $checkboxs.eq(i).closest("tr").remove()
+                    // $checkboxs.eq(i).closest("tr").remove()
                 }
                 uids = uids.substring(0, uids.length - 1)
                 // $.post("/admin/deleteUsers", {uids:uids})

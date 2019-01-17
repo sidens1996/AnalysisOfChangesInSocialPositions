@@ -33,6 +33,9 @@ public class AnalysejobApplicationTests {
 
     @Test
     public void contextLoads() {
+        Job job = new Job();
+        PageRequest request = PageRequest.of(0, 10);
+        Page<Job> jobs = jobService.getJobsByKeyword(job, request);
 //        jobService.deleteJobById("xixi");
 //        Job job = new Job();
 //        PageRequest request = PageRequest.of(1, 10);

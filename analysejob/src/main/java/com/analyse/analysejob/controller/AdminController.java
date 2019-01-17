@@ -1,12 +1,16 @@
 package com.analyse.analysejob.controller;
 
+import com.analyse.analysejob.entity.Job;
 import com.analyse.analysejob.entity.User;
+import com.analyse.analysejob.service.JobService;
 import com.analyse.analysejob.service.UserService;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +31,8 @@ public class AdminController {
 
     @Resource
     UserService userService;
-
+    @Resource
+    JobService jobService;
     //登录界面
     @RequestMapping("/login")
     public String login(Model model) {
@@ -56,7 +63,7 @@ public class AdminController {
     public String index(HttpServletRequest request) {
         HttpSession session = request.getSession();
         if (session.getAttribute("userMessage") == null) {
-            return "admin/login";
+            return "redirect:/admin/login";
         } else {
             return "admin/index";
         }
@@ -143,22 +150,22 @@ public class AdminController {
     //数据管理界面
     @RequestMapping("/manageData")
     public String manageData(@RequestParam(value = "keyword", required = false) String keyword,@RequestParam(value = "page", required = false) Integer currentPage,Model model) {
-        User user = new User();
+        Job job = new Job();
         //获取关键字
         if (keyword == null) {
             keyword = "";
         } else {
-            user.setUsername(keyword);
-            user.setRealname(keyword);
-            user.setProfession(keyword);
+            job.setJob_name(keyword);
+            job.setJob_city(keyword);
+            job.setTags(keyword);
         }
-        //当前页面
+        //当前页面默认为1
         if (currentPage == null) {
             currentPage = 1;
         }
         PageRequest request = PageRequest.of(currentPage - 1, 10);
-        Page<User> users = userService.getUsersByKeyword(user,request);
-        int totalPages = users.getTotalPages();
+        Page<Job> jobs = jobService.getJobsByKeyword(job, request);
+        int totalPages = jobs.getTotalPages();
         boolean hasPrev = true;
         boolean hasNext = true;
         //判断是否有上一页或者下一页
@@ -180,7 +187,7 @@ public class AdminController {
         if (totalPages - max >= 2) {
             pages.add(0);
         }
-        model.addAttribute("users", users.getContent());
+        model.addAttribute("jobs", jobs.getContent());
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("hasPrev", hasPrev);
@@ -188,5 +195,41 @@ public class AdminController {
         model.addAttribute("pages", pages);
         model.addAttribute("keyword", keyword);
         return "admin/manageData";
+    }
+
+    //数据管理修改数据
+    @RequestMapping("/updateData")
+    public String updateData(@RequestParam("jid") String jid, Job job) {
+        job.setUrl_object_id(jid);
+        jobService.updateJob(job);
+        return "redirect:/admin/manageData";
+    }
+
+    //数据管理删除数据
+    @RequestMapping("/deleteData")
+    public String deleteData(@RequestParam("jid") String jid) {
+        jobService.deleteJobById(jid);
+        return "redirect:/admin/manageData";
+    }
+
+    //数据管理批量删除数据
+    @RequestMapping("/deleteDatas")
+    public String deleteDatas(@RequestParam("jids") String jids) {
+        jobService.deleteJobsByIds(jids);
+        return "redirect:/admin/manageData";
+    }
+
+    //退出系统
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/admin/login";
+    }
+    //允许前端的string类型转存Date类型
+    @InitBinder
+    protected void init(HttpServletRequest request, ServletRequestDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 }

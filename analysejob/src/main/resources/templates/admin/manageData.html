@@ -34,7 +34,7 @@
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <!-- Navbar Header-->
                     <div class="navbar-header">
-                        <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                        <!-- Navbar Brand --><a href="index.html" th:href="@{/admin/index}" class="navbar-brand d-none d-sm-inline-block">
                         <div class="brand-text d-none d-lg-inline-block"><span>职位分析后台管理 </span><span class="icon icon-home"></span></div>
                         <div class="brand-text d-none d-sm-inline-block d-lg-none"><span class="icon icon-padnote"></span></div></a>
                         <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -45,10 +45,10 @@
                         <!--<li class="nav-item"><a href="login.html" class="nav-link"> <span class="d-none d-sm-inline">登录</span><i class="fa fa-sign-in"></i></a></li>-->
                         <!--登录后-->
                         <li class="nva-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">管理员</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" th:text="${session.userMessage.username}">管理员</a>
                             <div class="dropdown-menu text-center">
                                 <a class="dropdown-item" href="#">个人中心 <i class="fa fa-user-secret"></i> </a>
-                                <a class="dropdown-item" href="login.html"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>
+                                <a class="dropdown-item" href="login.html" th:href="@{/admin/logout}"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>
                             </div>
                         </li>
                     </ul>
@@ -84,7 +84,7 @@
                             </form>
                         </div>
                         <div class="row mt-3 justify-content-center">
-                            <button class="btn btn-danger m-1" id="deleteuser" type="button">批量删除</button>
+                            <button class="btn btn-danger m-1" id="deletejobs" type="button">批量删除</button>
                         </div>
                         <div class="row">
                             <table class="table table-hover table-bordered text-center">
@@ -102,69 +102,51 @@
                                     <th width="130">发布时间</th>
                                     <th width="100">操作</th>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" data-id="jobid1"></td>
-                                    <td>java工程师</td>
-                                    <td>20k-30k</td>
-                                    <td>武汉</td>
-                                    <td>10年以上</td>
-                                    <td>硕士</td>
-                                    <td>互联网,软件工程，金融</td>
-                                    <td>物联网，教育，金融</td>
-                                    <td>不需要融资</td>
-                                    <td>50-150人</td>
-                                    <td>2018-12-30</td>
-                                    <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" data-id="jobid1"></td>
-                                    <td>jobname</td>
-                                    <td>salary</td>
-                                    <td>city</td>
-                                    <td>workyears</td>
-                                    <td>degree</td>
-                                    <td>tags</td>
-                                    <td>field</td>
-                                    <td>development</td>
-                                    <td>scale</td>
-                                    <td>publish</td>
-                                    <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" data-id="jobid1"></td>
-                                    <td>jobname</td>
-                                    <td>salary</td>
-                                    <td>city</td>
-                                    <td>workyears</td>
-                                    <td>degree</td>
-                                    <td>tags</td>
-                                    <td>field</td>
-                                    <td>development</td>
-                                    <td>scale</td>
-                                    <td>publish</td>
-                                    <td><a href="#"><i class="fa fa-wrench"></i></a> | <a href="#"><i class="fa fa-trash"></i></a></td>
+                                <tr th:each="job:${jobs}">
+                                    <td><input type="checkbox" th:attr="data-id=${job.url_object_id}"></td>
+                                    <td th:text="${job.job_name}">java工程师</td>
+                                    <td th:text="${job.salary}">20k-30k</td>
+                                    <td th:text="${job.job_city}">武汉</td>
+                                    <td th:text="${job.work_years}">10年以上</td>
+                                    <td th:text="${job.degree_need}">硕士</td>
+                                    <td th:text="${job.tags}">互联网,软件工程，金融</td>
+                                    <td th:text="${job.company_field}">物联网，教育，金融</td>
+                                    <td th:text="${job.company_development}">不需要融资</td>
+                                    <td th:text="${job.company_scale}">50-150人</td>
+                                    <td th:text="${job.publish_time}">2018-12-30</td>
+                                    <td hidden="hidden" th:text="${job.job_description}">description</td>
+                                    <td><a href="#update" class="update"><i class="fa fa-wrench"></i></a> | <a href="#delete" class="delete"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </table>
                         </div>
                         <div>
-                            <p>每页<span class="text-primary">10</span>条，共<span class="text-primary">1</span>页</p>
+                            <p>每页<span class="text-primary">10</span>条，共<span class="text-primary" th:text="${totalPages}">1</span>页</p>
                         </div>
                     </div>
                     <nav class="mt-3">
                         <ul class="pagination justify-content-center">
+                            <!--上一页-->
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                <a th:if="${hasPrev}" class="page-link" href="#" th:href="@{/admin/manageData(page = ${currentPage} - 1, keyword=${keyword})}">
                                     <span aria-hidden="true">&laquo;</span>
                                     <span class="sr-only">Previous</span>
                                 </a>
+                                <a th:unless="${hasPrev}" class="page-link disabled">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <!--主体动态加载-->
+                            <li class="page-item" th:each="page : ${pages}" th:class="(${page} == ${currentPage})? 'page-item active': ((${page} == 0) ? 'page-item disabled':'page-item')">
+                                <a class="page-link" href="#" th:href="@{/admin/manageData(page=${page}, keyword=${keyword})}" th:text="(${page} == 0) ? '...': ${page}">1</a>
+                            </li>
+                            <!--下一页-->
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
+                                <a th:if="${hasNext}" class="page-link" href="#" th:href="@{/admin/manageData(page = ${currentPage} + 1, keyword=${keyword})}">
                                     <span aria-hidden="true">&raquo;</span>
                                     <span class="sr-only">Next</span>
+                                </a>
+                                <a th:unless="${hasNext}" class="page-link disabled">
+                                    <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>
@@ -200,83 +182,80 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-row">
-                        <label class="col-3 offset-1 h5">用户名:</label>
-                        <input class="col-6 form-control" type="text" name="username" required="required">
+                        <label class="col-3 offset-1 h5">职位名称:</label>
+                        <input class="col-6 form-control" type="text" name="job_name">
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">密码:</label>
-                        <input class="col-6 form-control" type="password" name="password" required="required">
+                        <label class="col-3 offset-1 h5">薪水:</label>
+                        <input class="col-6 form-control" type="text" name="salary">
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">真实姓名:</label>
-                        <input class="col-6 form-control" type="text" name="realname">
+                        <label class="col-3 offset-1 h5">城市:</label>
+                        <input class="col-6 form-control" type="text" name="job_city">
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">性别:</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="updateradio1" value="男">
-                            <label class="form-check-label" for="updateradio1">男</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="updateradio2" value="女">
-                            <label class="form-check-label" for="updateradio2">女</label>
-                        </div>
-                    </div>
-                    <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">年龄:</label>
-                        <input class="col-6 form-control" type="number" name="age">
-                    </div>
-                    <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">email:</label>
-                        <input class="col-6 form-control" type="email" name="email">
-                    </div>
-                    <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">电话:</label>
-                        <input class="col-6 form-control" type="tel" name="telephone">
-                    </div>
-                    <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">最高学历:</label>
-                        <select class="col-6 form-control" name="degree">
-                            <option value="">--选择学历--</option>
-                            <option value="大专">大专</option>
-                            <option value="本科">本科</option>
-                            <option value="硕士">硕士</option>
-                            <option value="博士">博士</option>
+                        <label class="col-3 offset-1 h5">经验:</label>
+                        <select class="col-6 form-control" name="work_years">
+                            <option value="经验不限">经验不限 </option>
+                            <option value="经验应届毕业生">经验应届毕业生 </option>
+                            <option value="经验1年以下">经验1年以下 </option>
+                            <option value="经验1-3年">经验1-3年 </option>
+                            <option value="经验3-5年">经验3-5年 </option>
+                            <option value="经验5-10年">经验5-10年 </option>
+                            <option value="经验10年以上">经验10年以上 </option>
                         </select>
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">工作经验:</label>
-                        <select class="col-6 form-control" name="workyears">
-                            <option value="">--选择工作经验--</option>
-                            <option value="应届毕业生">应届毕业生</option>
-                            <option value="3年及以下">3年及以下</option>
-                            <option value="3-5年">3-5年</option>
-                            <option value="5-10年">5-10年</option>
-                            <option value="5-10年">10年以上</option>
+                        <label class="col-3 offset-1 h5">学历:</label>
+                        <select class="col-6 form-control" name="degree_need">
+                            <option value="学历不限">学历不限 </option>
+                            <option value="大专及以上">大专及以上 </option>
+                            <option value="本科及以上">本科及以上 </option>
+                            <option value="硕士及以上">硕士及以上 </option>
+                            <option value="博士">博士 </option>
                         </select>
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">专业:</label>
-                        <input class="col-6 form-control" type="text" name="profession">
+                        <label class="col-3 offset-1 h5">标签:</label>
+                        <input class="col-6 form-control" type="text" name="tags">
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">角色:</label>
-                        <select class="col-6 form-control" name="role">
-                            <option value="">--选择角色--</option>
-                            <option value="用户">用户</option>
-                            <option value="管理员">管理员</option>
+                        <label class="col-3 offset-1 h5">公司领域:</label>
+                        <input class="col-6 form-control" type="text" name="company_field">
+                    </div>
+                    <div class="form-row mt-3">
+                        <label class="col-3 offset-1 h5">公司阶段:</label>
+                        <select class="col-6 form-control" name="company_development">
+                            <option value="">--选择阶段--</option>
+                            <option value="未融资">未融资</option>
+                            <option value="天使轮">天使轮</option>
+                            <option value="A轮">A轮</option>
+                            <option value="B轮">B轮</option>
+                            <option value="B轮">C轮</option>
+                            <option value="B轮">D轮及以上</option>
+                            <option value="B轮">上市公司</option>
+                            <option value="B轮">不需要融资</option>
                         </select>
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">状态:</label>
-                        <select class="col-6 form-control" name="status">
-                            <option value="true">true</option>
-                            <option value="false">false</option>
+                        <label class="col-3 offset-1 h5">公司规模:</label>
+                        <select class="col-6 form-control" name="company_scale">
+                            <option value="">--选择规模--</option>
+                            <option value="少于15人">少于15人</option>
+                            <option value="15-50人">15-50人</option>
+                            <option value="50-150人">50-150人</option>
+                            <option value="150-500人">150-500人</option>
+                            <option value="150-500人">500-2000人</option>
+                            <option value="150-500人">2000人以上</option>
                         </select>
                     </div>
                     <div class="form-row mt-3">
-                        <label class="col-3 offset-1 h5">描述:</label>
-                        <textarea class="col-6 form-control" name="description"></textarea>
+                        <label class="col-3 offset-1 h5">工作描述:</label>
+                        <textarea class="form-control" name="job_description"></textarea>
+                    </div>
+                    <div class="form-row mt-3">
+                        <label class="col-3 offset-1 h5">发布时间:</label>
+                        <input class="col-6 form-control" type="date" name="publish_time" readonly>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-center">
@@ -291,6 +270,7 @@
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/popper/popper.min.js"> </script>
 <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/manageData.js"></script>
 <script src="../vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="../vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- Main File-->

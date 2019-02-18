@@ -1,2 +1,4 @@
 # AnalysisOfChangesInSocialPositions
-2019/1/12
+analysejob 存放的是完整后台系统，没有前台
+position 是原型静态页面
+scrapytest.sql 是数据库的测试数据

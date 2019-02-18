@@ -32,6 +32,13 @@ public class AnalysejobApplicationTests {
     private JobService jobService;
 
     @Test
+    public void test() {
+        User user = new User();
+        user.setUsername("fdafasf");
+        user.setPassword("2131231");
+        User u = userService.registerUser(user);
+        System.out.println(u);
+    }
     public void contextLoads() {
         Job job = new Job();
         PageRequest request = PageRequest.of(0, 10);

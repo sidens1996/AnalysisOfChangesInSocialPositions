@@ -19,6 +19,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    //////////////////////////////////////////////////
+    //管理员功能接口实现
+    //////////////////////////////////////////////////
     //增加用户
     @Override
     public User addUser(User user) {
@@ -49,6 +52,19 @@ public class UserServiceImpl implements UserService {
         String[] userids = uids.split(",");
         for (int i = 0; i < userids.length; i++) {
             userRepository.deleteById(Integer.parseInt(userids[i]));
+        }
+    }
+    ////////////////////////////////////////////////////
+    //用户功能接口实现
+    ////////////////////////////////////////////////////
+    @Override
+    public User registerUser(User user) {
+        User u = userRepository.queryUserByUsername(user.getUsername());
+        if (u == null) {
+            userRepository.save(user);
+            return user;
+        }else {
+            return null;
         }
     }
 }

@@ -48,7 +48,7 @@ public class AdminController {
     public String validateLogin(User user, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         //验证用户名密码
         User validUser = userService.validateUser(user);
-        if (userService.validateUser(user) == null) {
+        if (validUser == null) {
             redirectAttributes.addFlashAttribute("errorMessage", true);
             return "redirect:/admin/login";
         } else {

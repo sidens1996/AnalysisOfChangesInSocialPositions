@@ -47,17 +47,17 @@
                 <div class="content">
                   <form method="post" th:action="@{/validateLogin}" class="form-validate">
                     <div class="form-group">
-                      <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
+                      <input id="login-username" type="text" name="username" required data-msg="Please enter your username" class="input-material">
                       <label for="login-username" class="label-material">User Name</label>
                     </div>
                     <div class="form-group">
-                      <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
+                      <input id="login-password" type="password" name="password" required data-msg="Please enter your password" class="input-material">
                       <label for="login-password" class="label-material">Password</label>
                     </div>
                     <span class="text-danger d-block" th:text="${errorMessage}"></span>
                     <button id="login" type="submit" class="btn btn-primary">登录</button>
                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-                  </form><small>Do not have an account? </small><a href="register.html" class="signup">去注册</a>
+                  </form><small>Do not have an account? </small><a href="register.html" th:href="@{/register}" class="signup">去注册</a>
                 </div>
               </div>
             </div>

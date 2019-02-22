@@ -1,23 +1,24 @@
 package com.analyse.analysejob.controller;
 
-import com.analyse.analysejob.entity.Job;
-import com.analyse.analysejob.entity.User;
+import com.analyse.analysejob.entity.*;
+import com.analyse.analysejob.service.DataService;
 import com.analyse.analysejob.service.JobService;
 import com.analyse.analysejob.service.UserService;
+import com.analyse.analysejob.util.AIModule;
+import com.analyse.analysejob.util.JobTrendData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,9 @@ public class UserController {
     UserService userService;
     @Resource
     JobService jobService;
+    @Resource
+    DataService dataService;
+
     //登录界面
     @RequestMapping("/login")
     public String login(Model model) {
@@ -90,11 +94,39 @@ public class UserController {
 
     //推荐
     @RequestMapping("/recommend")
-    public String recommend() { return "recommend"; }
+    public String recommend(Model model) {
+        List<Tags> tagsList = dataService.getAllTags();
+        List<Words> wordsList = dataService.getAllWords();
+        model.addAttribute(tagsList);
+        model.addAttribute(wordsList);
+        return "recommend";
+    }
 
     //预测
     @RequestMapping("/forecast")
-    public String forecast() { return "forecast"; }
+    public String forecast() {
+        return "forecast";
+    }
+
+    //加载十大职位
+    @RequestMapping("/loadForecast")
+    @ResponseBody
+    public JobTrendData loadForecast() {
+        AIModule ai=new AIModule();
+        Date date = new java.sql.Date(System.currentTimeMillis());
+        date = ai.dateShift(date, -15);
+        JobTrendData jobTrendData=ai.getJobTrend(12, date);
+        return jobTrendData;
+    }
+
+    //预测十大职位
+    @RequestMapping("/forecasting")
+    @ResponseBody
+    public JobTrendData forecasting(@RequestParam(value = "forecastdate") Date date) {
+        AIModule ai=new AIModule();
+        JobTrendData jobTrendData=ai.getJobTrend(12, date);
+        return jobTrendData;
+    }
 
     //结果
     @RequestMapping("/result")
@@ -140,4 +172,50 @@ public class UserController {
         return "result";
     }
 
+    @RequestMapping("/recommendResult")
+    @ResponseBody
+    public TotalData recommendResult(@RequestParam(value = "tags", required = false) String tags, @RequestParam(value = "words", required = false) String words) {
+        AIModule ai=new AIModule();
+//        String[] testTagStr=new String[] {"算法"};
+//        String[] testWordStr=new String[] {"员工福利"};
+        String[] testTagStr = tags.split(",");
+        String[] testWordStr = words.split(",");
+        TotalData total=ai.recommend(testTagStr, testWordStr);
+        total.setJobname("算法工程师");
+        return total;
+//        TotalData datas = new TotalData();
+//        List<CityData> cityData1s = new ArrayList<>();
+//        List<DegreeData> degreeDatas = new ArrayList<>();
+//        //jobname
+//        datas.setJobname("java工程师");
+//        //data1
+//        String [] citys = {"宁波", "深圳 ", "广州 ", "杭州", "成都", "武汉", "南京", "厦门", "西安", "长沙", "郑州", "重庆", "合肥", "天津", "福州", "济南", "无锡", "青岛", "大连", "东莞"};
+//        Integer [] salaryData = {15, 18, 19, 13, 10, 10, 8, 2, 10, 12, 15, 14, 14, 12, 13, 16, 18, 13, 15, 5};
+//        for (int i = 0; i < 20; i++) {
+//            CityData cityData = new CityData();
+//            cityData.setName(citys[i]);
+//            cityData.setValue(salaryData[i] * 10);
+//            cityData1s.add(cityData);
+//        }
+//        datas.setCityData(cityData1s);
+//        //data2
+//        String [] degrees = {"大专", "本科", "硕士", "博士", "其他"};
+//        Integer [] das = {230, 300, 160, 80, 50};
+//        for (int i = 0; i < 5; i++) {
+//            DegreeData degreeData = new DegreeData();
+//            degreeData.setName(degrees[i]);
+//            degreeData.setValue(das[i]);
+//            degreeDatas.add(degreeData);
+//        }
+//        datas.setDegreeData(degreeDatas);
+//        //data3
+////        String [] citys = {"宁波", "深圳", "广州", "杭州", "成都", "武汉", "南京", "厦门", "西安", "长沙", "郑州", "重庆", "合肥", "天津", "福州", "济南", "无锡", "青岛", "大连", "东莞"};
+//        datas.setDataAxis(citys);
+////        Integer [] salaryData = {15, 18, 19, 13, 12, 10, 8, 7, 10, 12, 15, 14, 14, 12, 13, 16, 18, 13, 15, 5};
+//        datas.setSalarydata(salaryData);
+//        Map maps = new HashMap<>();
+//        maps.put("a",1);maps.put("b",2);maps.put("c",3);maps.put("d",4);maps.put("e",5);maps.put("f",6);maps.put("g",7);
+//        datas.setKeywords(maps);
+//        return datas;
+    }
 }

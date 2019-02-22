@@ -1,9 +1,12 @@
 package com.analyse.analysejob;
 
 import com.analyse.analysejob.entity.Job;
+import com.analyse.analysejob.entity.Tags;
 import com.analyse.analysejob.entity.User;
+import com.analyse.analysejob.entity.Words;
 import com.analyse.analysejob.repository.JobRepository;
 import com.analyse.analysejob.repository.UserRepository;
+import com.analyse.analysejob.service.DataService;
 import com.analyse.analysejob.service.JobService;
 import com.analyse.analysejob.service.UserService;
 import com.analyse.analysejob.serviceImpl.UserServiceImpl;
@@ -38,8 +41,16 @@ public class AnalysejobApplicationTests {
     private JobRepository jobRepository;
     @Autowired
     private JobService jobService;
+    @Autowired
+    private DataService dataService;
 
     @Test
+    public void dataTest(){
+        List<Tags> tags = dataService.getAllTags();
+        List<Words> words = dataService.getAllWords();
+        System.out.println(tags.size());
+        System.out.println(words.size());
+    }
     public void query() {
         PageRequest request = PageRequest.of(0, 10);
         Job job = new Job();

@@ -78,85 +78,30 @@
                     <div class="row bg-white has-shadow">
                         <form class="w-100">
                             <div class="form-row">
-                                <label class="mr-2">工作经验:</label>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears1" value="应届毕业生">
-                                    <label class="custom-control-label" for="workyears1">应届毕业生</label>
+                                <label class="mr-2 bg-primary">工作标签:</label>
+                                <div class="custom-control custom-checkbox mr-2" th:each="tag:${tagsList}">
+                                    <input type="checkbox" class="custom-control-input" name="tag" th:value="${tag.name}" th:id="'tag' + ${tag.id}">
+                                    <label class="custom-control-label" th:text="${tag.name}" th:for="'tag' + ${tag.id}">移动互联网</label>
                                 </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears2" value="3年及以下">
-                                    <label class="custom-control-label" for="workyears2">3年及以下</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears3" value="3-5年">
-                                    <label class="custom-control-label" for="workyears3">3-5年</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears4" value="5-10年">
-                                    <label class="custom-control-label" for="workyears4">5-10年</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears5" value="10年以上">
-                                    <label class="custom-control-label" for="workyears5">10年以上</label>
-                                </div>
+                                <!--<button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse2" >更多</button>-->
                             </div>
+                            <!--<div class="collapse multi-collapse" id="collapse2">-->
+                            <!--<div class="form-row">-->
+                            <!--<div class="custom-control custom-checkbox mr-2">-->
+                            <!--<input type="checkbox" class="custom-control-input" name="tag" id="tag4" value="">-->
+                            <!--<label class="custom-control-label" for="tag4">教育</label>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
                             <div class="form-row">
-                                <label class="mr-2">学历要求:</label>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="dazhuan" value="大专">
-                                    <label class="custom-control-label" for="dazhuan">大专</label>
+                                <label class="mr-2 bg-primary">工作描述:</label>
+                                <div class="custom-control custom-checkbox mr-2" th:each="word:${wordsList}">
+                                    <input type="checkbox" class="custom-control-input" name="word" th:value="${word.name}" th:id="'word' + ${word.id}">
+                                    <label class="custom-control-label" th:text="${word.name}" th:for="'word' + ${word.id}">移动互联网</label>
                                 </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="benke" value="本科">
-                                    <label class="custom-control-label" for="benke">本科</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="shuoshi" value="硕士">
-                                    <label class="custom-control-label" for="shuoshi">硕士</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="boshi" value="博士">
-                                    <label class="custom-control-label" for="boshi">博士</label>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <label class="mr-2">工作标签:</label>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag1" value="">
-                                    <label class="custom-control-label" for="tag1">移动互联网</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag2" value="">
-                                    <label class="custom-control-label" for="tag2">电子商务</label>
-                                </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag3" value="">
-                                    <label class="custom-control-label" for="tag3">金融</label>
-                                </div>
-                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse2" >更多</button>
-                            </div>
-                            <div class="collapse multi-collapse" id="collapse2">
-                                <div class="form-row">
-                                    <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag4" value="">
-                                        <label class="custom-control-label" for="tag4">教育</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag5" value="">
-                                        <label class="custom-control-label" for="tag5">游戏</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag6" value="">
-                                        <label class="custom-control-label" for="tag6">O2O</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <label class="mr-2">描述:</label>
-                                <textarea class="form-control" name="description"></textarea>
                             </div>
                             <div class="form-row pt-2">
-                                <button class="col-md-2 offset-5 form-control btn btn-primary btn-sm" type="submit">智能推荐</button>
+                                <button class="col-md-2 offset-5 form-control btn btn-primary btn-sm" type="submit" id="recommend">智能推荐</button>
                             </div>
                         </form>
                     </div>

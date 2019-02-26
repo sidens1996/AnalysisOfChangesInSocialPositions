@@ -13,10 +13,12 @@ public class Statistic {
 	public Map<String,Integer> city_salary=new HashMap();
 	public Map<String,Integer> city_count=new HashMap();
 	public Map<String,Integer> degree_count=new HashMap();
+	public Map<String,Integer> word_count=new HashMap();
 	public Statistic(List<MyJob> jobs) {
 		this.jobs=jobs;
 		doStatistic();
 	}
+	//2-25 pm
 	private void doStatistic() {
 		if(jobs==null)
 			return;
@@ -26,6 +28,7 @@ public class Statistic {
 			int salary=(salary_low+salary_high)/2;
 			String city=job.job_city;
 			String degree=job.degree_need;
+			String words=job.getWords();
 			if(city_count.containsKey(city)) {
 				int count=(int)city_count.get(city);
 				city_count.put(city,count+1);
@@ -44,7 +47,17 @@ public class Statistic {
 			}else {
 				city_salary.put(city,salary);
 			}
-			
+			if(words!="") {
+				String[] word_list=words.split(",");
+				for(String word:word_list) {
+					if(!word_count.containsKey(word))
+						word_count.put(word, 1);
+					else {
+						int count=word_count.get(word);
+						word_count.put(word, count+1);
+					}
+				}
+			}
 		}
 		for(String city:city_salary.keySet()) {
 			int count=city_count.get(city);
@@ -52,8 +65,11 @@ public class Statistic {
 			city_salary.put(city,sa/count);
 		}
 	}
+	//2-25 pm
+
 	public TotalData getTotalData() {
 		TotalData total=new TotalData();
+		total.setJobname(jobs.get(0).getJob_name());
 		List<CityData> cityData=new ArrayList();
 		List<DegreeData> degreeData=new ArrayList();
 		String[] axis=new String[city_salary.size()];
@@ -70,10 +86,12 @@ public class Statistic {
 			sa[i]=city_salary.get(city);
 			i++;
 		}
+
 		total.setCityData(cityData);
 		total.setDegreeData(degreeData);
 		total.setDataAxis(axis);
 		total.setSalarydata(sa);
+		total.setKeywords(word_count);
 		return total;
 	}
 }

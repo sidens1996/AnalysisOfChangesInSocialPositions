@@ -3,9 +3,18 @@ import java.sql.Date;
 
 public class MyJob {
 	public int id;
+	public String words;
+	public String getWords() {
+		return words;
+	}
+
+	public void setWords(String words) {
+		this.words = words;
+	}
+
 	public MyJob(int id, String job_name, String job_city, int salary_low, int salary_high, String work_years,
-			String degree_need, String tags, String job_description, String company_field, String company_development,
-			String company_scale, String url, Date public_time) {
+				 String degree_need, String tags, String job_description, String company_field, String company_development,
+				 String company_scale, String url, Date public_time) {
 		super();
 		this.id = id;
 		this.job_name = job_name;
@@ -21,6 +30,11 @@ public class MyJob {
 		this.company_scale = company_scale;
 		this.url = url;
 		this.public_time = public_time;
+		this.words=words;
+	}
+
+	public String getJob_name() {
+		return job_name;
 	}
 	public void setId(int id) {
 		this.id = id;
@@ -89,10 +103,11 @@ public class MyJob {
 	public String company_development;
 	public String company_scale;
 	public String url;
-	public Date public_time; 
+	public Date public_time;
 	//private DAO dao;
-	
+
 	public MyJob() {
-		
+
 	}
 }
+

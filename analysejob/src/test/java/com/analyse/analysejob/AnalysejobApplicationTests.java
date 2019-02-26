@@ -2,8 +2,6 @@ package com.analyse.analysejob;
 
 import com.analyse.analysejob.entity.Job;
 import com.analyse.analysejob.entity.Tags;
-import com.analyse.analysejob.entity.User;
-import com.analyse.analysejob.entity.Words;
 import com.analyse.analysejob.repository.JobRepository;
 import com.analyse.analysejob.repository.UserRepository;
 import com.analyse.analysejob.service.DataService;
@@ -24,7 +22,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -47,9 +44,7 @@ public class AnalysejobApplicationTests {
     @Test
     public void dataTest(){
         List<Tags> tags = dataService.getAllTags();
-        List<Words> words = dataService.getAllWords();
         System.out.println(tags.size());
-        System.out.println(words.size());
     }
     public void query() {
         PageRequest request = PageRequest.of(0, 10);

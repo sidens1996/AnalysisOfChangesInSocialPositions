@@ -23,7 +23,6 @@ public class AIModule {
 
 	public AIModule() {
 		readTags();
-		readWords();
 		featureDim=tagMap.size()+wordMap.size();
 		readJobVec();
 		getJobVecMap(jobVecStrMap);
@@ -38,12 +37,12 @@ public class AIModule {
 		try {
 			while(rs.next()){
 				//System.out.println("enter while");
-			    // 通过字段检索
-			    int id  = rs.getInt("id");
-			    String name = rs.getString("name");
-			    // 输出数据
-			    //System.out.println(id+name);
-			    tagMap.put(name,id);
+				// 通过字段检索
+				int id  = rs.getInt("id");
+				String name = rs.getString("tag");
+				// 输出数据
+				//System.out.println(id+name);
+				tagMap.put(name,id);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -56,63 +55,18 @@ public class AIModule {
 			e.printStackTrace();
 		}
 	}
-	public void readWords() {
-		ResultSet rs=dao.execute("select * from words");
-		try {
-			while(rs.next()){
-				//System.out.println("enter while");
-			    // 通过字段检索
-			    int id  = rs.getInt("id");
-			    String name = rs.getString("name");
-			    // 输出数据
-			    //System.out.println(id+name);
-			    wordMap.put(name,id);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public void readUsers() {
-		ResultSet rs=dao.execute("select * from users");
-		try {
-			while(rs.next()){
-				//System.out.println("enter while");
-			    // 通过字段检索
-			    int id  = rs.getInt("id");
-			    String vector = rs.getString("vector");
-			    // 输出数据
-			    //System.out.println(id+name);
-			    wordMap.put(id,vector);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 	public void readJobVec() {
-		ResultSet rs=dao.execute("select * from jobVec");
+		ResultSet rs=dao.execute("select * from jobVectors");
 		try {
 			while(rs.next()){
 				//System.out.println("enter while");
-			    // 通过字段检索
-			    int id  = rs.getInt("id");
-			    String vector = rs.getString("vector");
-			    // 输出数据
-			    //System.out.println(id+name);
-			    jobVecStrMap.put(id,vector);
+				// 通过字段检索
+				int id  = rs.getInt("id");
+				String vector = rs.getString("vector");
+				// 输出数据
+				//System.out.println(id+name);
+				jobVecStrMap.put(id,vector);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -126,7 +80,7 @@ public class AIModule {
 		}
 	}
 	private RealVector str2vec(String str) {
-		RealVector vec=new ArrayRealVector(featureDim);
+		RealVector vec=new ArrayRealVector(tagMap.size());
 		String[] vec_str=str.split(",");
 		int i=0;
 		//List indexes=new ArrayList();
@@ -139,7 +93,7 @@ public class AIModule {
 		}
 		//System.out.println(indexes.size());
 		return vec;
-		
+
 	}
 	private void getJobVecMap(Map map) {
 		for(int i=0;i<map.size();i++) {
@@ -148,7 +102,7 @@ public class AIModule {
 			//delete the same ele in str map
 		}
 	}
-	
+
 	private RealVector getVecFromStr(String[] tagStr,String[] wordStr) {
 		RealVector tagVec=new ArrayRealVector(tagMap.size());
 		RealVector wordVec=new ArrayRealVector(wordMap.size());
@@ -163,7 +117,16 @@ public class AIModule {
 		RealVector feature=tagVec.append(wordVec);
 		return feature;
 	}
-	
+
+	private RealVector getVecFromStr(String[] tagStr) {
+		RealVector tagVec=new ArrayRealVector(tagMap.size());
+		for(String tag : tagStr) {
+			int index=(int)tagMap.get(tag);
+			tagVec.setEntry(index, 1);
+		}
+		return tagVec;
+	}
+
 	private double getConsineSim(RealVector v1,RealVector v2) {
 		return v1.dotProduct(v2)/(v1.getNorm()*v2.getNorm());
 	}
@@ -219,11 +182,23 @@ public class AIModule {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String sql2=String.format("SELECT * FROM job_words WHERE id=%d", id);
+		ResultSet rs2=dao.execute(sql2);
+		try {
+			while(rs2.next()) {
+				String words=rs2.getString("words");
+				if(job!=null)
+					job.setWords(words);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return job;
 	}
 	public List<MyJob> recommendJobs(RealVector vec) {
 		List<Pair<Integer,Double>> list=calConsineSim(vec, jobVecMap);
-		List<Pair<Integer,Double>> target=list.subList(0, 100);
+		List<Pair<Integer,Double>> target=list.subList(0, 1000);
 		List<MyJob> jobs=new ArrayList<MyJob>();
 		for(Pair<Integer,Double> x:target) {
 			MyJob job=fillJob(x.getKey());
@@ -231,10 +206,10 @@ public class AIModule {
 				jobs.add(job);
 		}
 		return jobs;
-		
+
 	}
-	public TotalData recommend(String[] tagStr, String[] wordStr) {
-		RealVector vec=getVecFromStr(tagStr,wordStr);
+	public TotalData recommend(String[] tagStr) {
+		RealVector vec=getVecFromStr(tagStr);
 		List<MyJob> jobs=recommendJobs(vec);
 		Statistic s=new Statistic(jobs);
 		return s.getTotalData();
@@ -283,12 +258,26 @@ public class AIModule {
 
 	public static void main(String[] args) {
 		AIModule ai=new AIModule();
-		Date sqlDate=java.sql.Date.valueOf("2019-1-5");
+		String[] testTagStr=new String[] {"人工智能"};
+		//String[] testWordStr=new String[] {"员工福利"};
+		TotalData total=ai.recommend(testTagStr);
 
-		JobTrendData trend=ai.getJobTrend(12, sqlDate);
-		for(int i=0;i<29;i++) {
-			System.out.println(trend.time[i]+':'+trend.heat[i]);
+		for(CityData city:total.getCityData()) {
+			System.out.println(city.getName()+city.getValue());
 		}
+		for(String city:total.getDataAxis()) {
+			System.out.println(city);
+		}
+		for(int sa:total.getSalarydata()) {
+			System.out.println(sa);
+		}
+		for(DegreeData degree:total.getDegreeData()) {
+			System.out.println(degree.getName()+degree.getValue());
+		}
+		System.out.println(total.getJobname());
+		System.out.println(total.getKeywords());
+		System.out.println(total.getKeywords().size());
+		System.out.println(total.getKeywords().keySet().toArray()[1]);
 		//DAO dao=new DAO("song","");
 		//dao.execute("select * from tags limit 10");
 		//RealVector rv1=new ArrayRealVector(new double[] {1,2,3});

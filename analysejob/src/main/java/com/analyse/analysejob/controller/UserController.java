@@ -96,9 +96,7 @@ public class UserController {
     @RequestMapping("/recommend")
     public String recommend(Model model) {
         List<Tags> tagsList = dataService.getAllTags();
-        List<Words> wordsList = dataService.getAllWords();
         model.addAttribute(tagsList);
-        model.addAttribute(wordsList);
         return "recommend";
     }
 
@@ -174,14 +172,12 @@ public class UserController {
 
     @RequestMapping("/recommendResult")
     @ResponseBody
-    public TotalData recommendResult(@RequestParam(value = "tags", required = false) String tags, @RequestParam(value = "words", required = false) String words) {
+    public TotalData recommendResult(@RequestParam(value = "tags", required = false) String tags) {
         AIModule ai=new AIModule();
 //        String[] testTagStr=new String[] {"算法"};
 //        String[] testWordStr=new String[] {"员工福利"};
         String[] testTagStr = tags.split(",");
-        String[] testWordStr = words.split(",");
-        TotalData total=ai.recommend(testTagStr, testWordStr);
-        total.setJobname("算法工程师");
+        TotalData total=ai.recommend(testTagStr);
         return total;
 //        TotalData datas = new TotalData();
 //        List<CityData> cityData1s = new ArrayList<>();

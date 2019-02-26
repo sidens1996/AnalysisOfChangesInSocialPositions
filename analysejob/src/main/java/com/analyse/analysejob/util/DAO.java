@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class DAO {
 	 // JDBC 驱动名及数据库 URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    static final String DB_URL = "jdbc:mysql://localhost:3306/myjob?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/myjob2?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
     // 数据库的用户名与密码，需要根据自己的设置
     private String USER;
     private String PASS;
@@ -41,7 +41,7 @@ public class DAO {
 		Statement stmt = null;
 		ResultSet rs=null;
 		try{
-	         System.out.println(" 实例化Statement对象...");
+//	         System.out.println(" 实例化Statement对象...");
 	         stmt = conn.createStatement();
 	         rs = stmt.executeQuery(sql);
 	         // 展开结果集数据库

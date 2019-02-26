@@ -77,19 +77,863 @@
                 <div class="container-fluid">
                     <div class="row bg-white has-shadow">
                         <form class="w-100">
+                            <!--1-->
                             <div class="form-row">
-                                <label class="mr-2 bg-primary">工作标签:</label>
-                                <div class="custom-control custom-checkbox mr-2" th:each="tag:${tagsList}">
-                                    <input type="checkbox" class="custom-control-input" name="tag" th:value="${tag.name}" th:id="'tag' + ${tag.id}">
-                                    <label class="custom-control-label" th:text="${tag.name}" th:for="'tag' + ${tag.id}">移动互联网</label>
+                                <label class="mr-2 bg-primary">人工智能和大数据:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag1" value="大数据">
+                                    <label class="custom-control-label" for="tag1">大数据</label>
                                 </div>
-                                <!--<button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse2" >更多</button>-->
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag2" value="数据挖掘">
+                                    <label class="custom-control-label" for="tag2">数据挖掘</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag3" value="云计算">
+                                    <label class="custom-control-label" for="tag3">云计算</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag4" value="hadoop">
+                                    <label class="custom-control-label" for="tag4">hadoop</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag5" value="机器学习">
+                                    <label class="custom-control-label" for="tag5">机器学习</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag6" value="深度学习">
+                                    <label class="custom-control-label" for="tag6">深度学习</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag7" value="spark">
+                                    <label class="custom-control-label" for="tag7">spark</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag8" value="nlp">
+                                    <label class="custom-control-label" for="tag8">nlp</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag9" value="计算机视觉">
+                                    <label class="custom-control-label" for="tag9">计算机视觉</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag10" value="模式识别">
+                                    <label class="custom-control-label" for="tag10">模式识别</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse1" >更多</button>
                             </div>
+                            <div class="collapse multi-collapse" id="collapse1">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag11" value="数据分析">
+                                        <label class="custom-control-label" for="tag11">数据分析</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag13" value="区块链">
+                                        <label class="custom-control-label" for="tag13">区块链</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag14" value="vr">
+                                        <label class="custom-control-label" for="tag14">vr</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag15" value="数据架构">
+                                        <label class="custom-control-label" for="tag15">数据架构</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag16" value="图像处理">
+                                        <label class="custom-control-label" for="tag16">图像处理</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag17" value="数据处理">
+                                        <label class="custom-control-label" for="tag17">数据处理</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--2-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">软件开发:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag18" value="移动互联网">
+                                    <label class="custom-control-label" for="tag18">移动互联网</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag19" value="软件开发">
+                                    <label class="custom-control-label" for="tag19">软件开发</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag20" value="seo">
+                                    <label class="custom-control-label" for="tag20">seo</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag21" value="unity3d">
+                                    <label class="custom-control-label" for="tag21">unity3d</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag22" value="windows">
+                                    <label class="custom-control-label" for="tag22">windows</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag23" value="全栈">
+                                    <label class="custom-control-label" for="tag23">全栈</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag24" value="供应链">
+                                    <label class="custom-control-label" for="tag24">供应链</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag25" value="app">
+                                    <label class="custom-control-label" for="tag25">app</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag26" value="shell">
+                                    <label class="custom-control-label" for="tag26">shell</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag27" value="react native">
+                                    <label class="custom-control-label" for="tag27">react native</label>
+                                </div>
+                            </div>
+                            <!--3-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">编程语言:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag28" value="java">
+                                    <label class="custom-control-label" for="tag28">java</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag29" value="c++">
+                                    <label class="custom-control-label" for="tag29">c++</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag30" value="android">
+                                    <label class="custom-control-label" for="tag30">android</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag31" value="javascript">
+                                    <label class="custom-control-label" for="tag31">javascript</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag32" value="php">
+                                    <label class="custom-control-label" for="tag32">php</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag33" value="html5">
+                                    <label class="custom-control-label" for="tag33">html5</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag34" value="python">
+                                    <label class="custom-control-label" for="tag34">python</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag35" value="nlp">
+                                    <label class="custom-control-label" for="tag35">nlp</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag36" value="c">
+                                    <label class="custom-control-label" for="tag36">c</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag37" value="go">
+                                    <label class="custom-control-label" for="tag37">go</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse2" >更多</button>
+                            </div>
+                            <div class="collapse multi-collapse" id="collapse2">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag38" value="golang">
+                                        <label class="custom-control-label" for="tag38">golang</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag39" value="scala">
+                                        <label class="custom-control-label" for="tag39">scala</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag40" value="flash">
+                                        <label class="custom-control-label" for="tag40">flash</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--4-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">前端开发:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag41" value="ui">
+                                    <label class="custom-control-label" for="tag41">ui</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag42" value="mfc">
+                                    <label class="custom-control-label" for="tag42">mfc</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag43" value="客户端">
+                                    <label class="custom-control-label" for="tag43">客户端</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag44" value="移动开发">
+                                    <label class="custom-control-label" for="tag44">移动开发</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag45" value="web前端">
+                                    <label class="custom-control-label" for="tag45">web前端</label>
+                                </div>
+                            </div>
+                            <!--5-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">软件测试:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag46" value="功能测试">
+                                    <label class="custom-control-label" for="tag46">功能测试</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag47" value="性能测试">
+                                    <label class="custom-control-label" for="tag47">性能测试</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag48" value="android测试">
+                                    <label class="custom-control-label" for="tag48">android测试</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag49" value="自动化测试">
+                                    <label class="custom-control-label" for="tag49">自动化测试</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag50" value="产品测试">
+                                    <label class="custom-control-label" for="tag50">产品测试</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag51" value="web测试">
+                                    <label class="custom-control-label" for="tag51">web测试</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag52" value="app测试">
+                                    <label class="custom-control-label" for="tag52">app测试</label>
+                                </div>
+                            </div>
+                            <!--6-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">运营:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag53" value="用户运营">
+                                    <label class="custom-control-label" for="tag53">用户运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag54" value="内容运营">
+                                    <label class="custom-control-label" for="tag54">内容运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag55" value="产品运营">
+                                    <label class="custom-control-label" for="tag55">产品运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag56" value="新媒体运营">
+                                    <label class="custom-control-label" for="tag56">新媒体运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag57" value="电商运营">
+                                    <label class="custom-control-label" for="tag57">电商运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag58" value="微信运营">
+                                    <label class="custom-control-label" for="tag58">微信运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag59" value="社区运营">
+                                    <label class="custom-control-label" for="tag59">社区运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag60" value="商家运营">
+                                    <label class="custom-control-label" for="tag60">商家运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag61" value="品牌运营">
+                                    <label class="custom-control-label" for="tag61">品牌运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag62" value="游戏运营">
+                                    <label class="custom-control-label" for="tag62">游戏运营</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse3" >更多</button>
+                            </div>
+                            <div class="collapse multi-collapse" id="collapse3">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag63" value="粉丝运营">
+                                        <label class="custom-control-label" for="tag63">粉丝运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag64" value="微博运营">
+                                        <label class="custom-control-label" for="tag64">微博运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag65" value="品类运营">
+                                        <label class="custom-control-label" for="tag65">品类运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag66" value="海外运营">
+                                        <label class="custom-control-label" for="tag66">海外运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag67" value="淘宝运营">
+                                        <label class="custom-control-label" for="tag67">淘宝运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag68" value="天猫运营">
+                                        <label class="custom-control-label" for="tag68">天猫运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag69" value="网络运营">
+                                        <label class="custom-control-label" for="tag69">网络运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag70" value="京东运营">
+                                        <label class="custom-control-label" for="tag70">京东运营</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag71" value="o2o运营">
+                                        <label class="custom-control-label" for="tag71">o2o运营</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--7-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">管理:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag72" value="区域管理">
+                                    <label class="custom-control-label" for="tag72">区域管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag73" value="事业部管理">
+                                    <label class="custom-control-label" for="tag73">事业部管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag74" value="运维管理">
+                                    <label class="custom-control-label" for="tag74">运维管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag75" value="配置管理">
+                                    <label class="custom-control-label" for="tag75">配置管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag76" value="资产管理">
+                                    <label class="custom-control-label" for="tag76">资产管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag77" value="市场管理">
+                                    <label class="custom-control-label" for="tag77">市场管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag78" value="营销管理">
+                                    <label class="custom-control-label" for="tag78">营销管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag79" value="战略管理">
+                                    <label class="custom-control-label" for="tag79">战略管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag80" value="项目管理">
+                                    <label class="custom-control-label" for="tag80">项目管理</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag81" value="高级技术管理">
+                                    <label class="custom-control-label" for="tag81">高级技术管理</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse4" >更多</button>
+                            </div>
+                            <div class="collapse multi-collapse" id="collapse4">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag82" value="品牌管理">
+                                        <label class="custom-control-label" for="tag82">品牌管理</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag83" value="技术管理">
+                                        <label class="custom-control-label" for="tag83">技术管理</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag84" value="部门管理">
+                                        <label class="custom-control-label" for="tag84">部门管理</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--8-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">营销:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag85" value="新零售">
+                                    <label class="custom-control-label" for="tag85">新零售</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag86" value="app推广">
+                                    <label class="custom-control-label" for="tag86">app推广</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag87" value="线下拓展">
+                                    <label class="custom-control-label" for="tag87">线下拓展</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag88" value="网店">
+                                    <label class="custom-control-label" for="tag88">网店</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag89" value="广告创意">
+                                    <label class="custom-control-label" for="tag89">广告创意</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag90" value="市场顾问">
+                                    <label class="custom-control-label" for="tag90">市场顾问</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag91" value="行业分析">
+                                    <label class="custom-control-label" for="tag91">行业分析</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag92" value="广告执行">
+                                    <label class="custom-control-label" for="tag92">广告执行</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag93" value="广告销售">
+                                    <label class="custom-control-label" for="tag93">广告销售</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag94" value="整合营销">
+                                    <label class="custom-control-label" for="tag94">整合营销</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse5" >更多</button>
+                            </div>
+                            <div class="collapse multi-collapse" id="collapse5">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag95" value="跨境电商">
+                                        <label class="custom-control-label" for="tag95">跨境电商</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag96" value="区域销售">
+                                        <label class="custom-control-label" for="tag96">区域销售</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag97" value="广告协调">
+                                        <label class="custom-control-label" for="tag97">广告协调</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag98" value="网站推广">
+                                        <label class="custom-control-label" for="tag98">网站推广</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag99" value="公共关系">
+                                        <label class="custom-control-label" for="tag99">公共关系</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag100" value="互动营销">
+                                        <label class="custom-control-label" for="tag100">互动营销</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--9-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">财务_金融:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag101" value="互联网金融">
+                                    <label class="custom-control-label" for="tag101">互联网金融</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag102" value="商务">
+                                    <label class="custom-control-label" for="tag102">商务</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag103" value="银行">
+                                    <label class="custom-control-label" for="tag103">银行</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag104" value="商务拓展">
+                                    <label class="custom-control-label" for="tag104">商务拓展</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag105" value="支付">
+                                    <label class="custom-control-label" for="tag105">支付</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag106" value="总账">
+                                    <label class="custom-control-label" for="tag106">总账</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag107" value="绩效考核">
+                                    <label class="custom-control-label" for="tag107">绩效考核</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag108" value="成本">
+                                    <label class="custom-control-label" for="tag108">成本</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag109" value="采购">
+                                    <label class="custom-control-label" for="tag109">采购</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag110" value="审计">
+                                    <label class="custom-control-label" for="tag110">审计</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse6" >更多</button>
+                            </div>
+                            <div class="collapse multi-collapse" id="collapse6">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag111" value="统计">
+                                        <label class="custom-control-label" for="tag111">统计</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag112" value="证券/期货">
+                                        <label class="custom-control-label" for="tag112">证券/期货</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag113" value="商务渠道">
+                                        <label class="custom-control-label" for="tag113">商务渠道</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag114" value="投资/融资">
+                                        <label class="custom-control-label" for="tag114">投资/融资</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag115" value="商业产品">
+                                        <label class="custom-control-label" for="tag115">商业产品</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag116" value="外贸">
+                                        <label class="custom-control-label" for="tag116">外贸</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag117" value="财经">
+                                        <label class="custom-control-label" for="tag117">财经</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag118" value="借贷">
+                                        <label class="custom-control-label" for="tag118">借贷</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag119" value="结算">
+                                        <label class="custom-control-label" for="tag119">结算</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag120" value="bd">
+                                        <label class="custom-control-label" for="tag120">bd</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag121" value="往来">
+                                        <label class="custom-control-label" for="tag121">往来</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag122" value="风控">
+                                        <label class="custom-control-label" for="tag122">风控</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag123" value="理财">
+                                        <label class="custom-control-label" for="tag123">理财</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag124" value="审核">
+                                        <label class="custom-control-label" for="tag124">审核</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag125" value="跟单">
+                                        <label class="custom-control-label" for="tag125">跟单</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--10-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">策划:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag126" value="活动策划">
+                                    <label class="custom-control-label" for="tag126">活动策划</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag127" value="市场策划">
+                                    <label class="custom-control-label" for="tag127">市场策划++</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag128" value="营销策划">
+                                    <label class="custom-control-label" for="tag128">营销策划</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag129" value="产品策划">
+                                    <label class="custom-control-label" for="tag129">产品策划</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag130" value="品牌规划">
+                                    <label class="custom-control-label" for="tag130">品牌规划</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag131" value="市场推广">
+                                    <label class="custom-control-label" for="tag131">市场推广</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag132" value="市场拓展">
+                                    <label class="custom-control-label" for="tag132">市场拓展</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag133" value="品牌传播/推广">
+                                    <label class="custom-control-label" for="tag133">品牌传播/推广</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag134" value="解决方案">
+                                    <label class="custom-control-label" for="tag134">解决方案</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag135" value="文案/策划">
+                                    <label class="custom-control-label" for="tag135">文案/策划</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse7" >更多</button>
+                            </div>
+                            <div class="collapse multi-collapse" id="collapse7">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag136" value="游戏策划">
+                                        <label class="custom-control-label" for="tag136">游戏策划</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--11-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">常见职位:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag137" value="电商">
+                                    <label class="custom-control-label" for="tag137">电商</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag138" value="游戏">
+                                    <label class="custom-control-label" for="tag138">游戏++</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag139" value="运营">
+                                    <label class="custom-control-label" for="tag139">运营</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag140" value="广告营销">
+                                    <label class="custom-control-label" for="tag140">广告营销</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag141" value="营销">
+                                    <label class="custom-control-label" for="tag141">营销</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag142" value="财务">
+                                    <label class="custom-control-label" for="tag142">财务</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag143" value="教育">
+                                    <label class="custom-control-label" for="tag143">教育</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag144" value="人事">
+                                    <label class="custom-control-label" for="tag144">人事</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag145" value="人力资源">
+                                    <label class="custom-control-label" for="tag145">人力资源</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag146" value="秘书">
+                                    <label class="custom-control-label" for="tag146">秘书</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag147" value="客服">
+                                    <label class="custom-control-label" for="tag147">客服</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag148" value="法务">
+                                    <label class="custom-control-label" for="tag148">法务</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag149" value="直播">
+                                    <label class="custom-control-label" for="tag149">直播</label>
+                                </div>
+                                <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse8" >更多</button>
+                            </div>
+                            <div class="collapse multi-collapse" id="collapse8">
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag150" value="金融">
+                                        <label class="custom-control-label" for="tag150">金融</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag151" value="出纳">
+                                        <label class="custom-control-label" for="tag151">出纳</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag152" value="推广">
+                                        <label class="custom-control-label" for="tag152">推广</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag153" value="策划">
+                                        <label class="custom-control-label" for="tag153">策划</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag154" value="销售">
+                                        <label class="custom-control-label" for="tag154">销售</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag155" value="助理">
+                                        <label class="custom-control-label" for="tag155">助理</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag156" value="文案">
+                                        <label class="custom-control-label" for="tag156">文案</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag157" value="编辑">
+                                        <label class="custom-control-label" for="tag157">编辑</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag158" value="文员">
+                                        <label class="custom-control-label" for="tag158">文员</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag160" value="前台">
+                                        <label class="custom-control-label" for="tag160">前台</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag161" value="售前">
+                                        <label class="custom-control-label" for="tag161">售前</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag162" value="售后">
+                                        <label class="custom-control-label" for="tag162">售后</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag163" value="总经理助理">
+                                        <label class="custom-control-label" for="tag163">总经理助理</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag164" value="总裁助理">
+                                        <label class="custom-control-label" for="tag164">总裁助理</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag165" value="文秘">
+                                        <label class="custom-control-label" for="tag165">文秘</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag166" value="电商美工">
+                                        <label class="custom-control-label" for="tag166">电商美工</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag167" value="硬件制造">
+                                        <label class="custom-control-label" for="tag167">硬件制造</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag168" value="税务">
+                                        <label class="custom-control-label" for="tag168">税务</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag169" value="用户体验">
+                                        <label class="custom-control-label" for="tag169">用户体验</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag170" value="电子/半导体/集成电路">
+                                        <label class="custom-control-label" for="tag170">电子/半导体/集成电路</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag171" value="大客户销售">
+                                        <label class="custom-control-label" for="tag171">大客户销售</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag172" value="记者">
+                                        <label class="custom-control-label" for="tag172">记者</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag174" value="在线客服">
+                                        <label class="custom-control-label" for="tag174">在线客服</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag175" value="代理商">
+                                        <label class="custom-control-label" for="tag175">代理商</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag176" value="律师">
+                                        <label class="custom-control-label" for="tag176">律师</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag177" value="保险">
+                                        <label class="custom-control-label" for="tag177">保险</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag178" value="顾问">
+                                        <label class="custom-control-label" for="tag178">顾问</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag179" value="体育">
+                                        <label class="custom-control-label" for="tag179">体育</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag180" value="后勤保障">
+                                        <label class="custom-control-label" for="tag180">后勤保障</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag181" value="后勤">
+                                        <label class="custom-control-label" for="tag181">后勤</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!--12-->
+                            <div class="form-row">
+                                <label class="mr-2 bg-primary">客服:</label>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag182" value="交互">
+                                    <label class="custom-control-label" for="tag182">交互</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag183" value="房产服务">
+                                    <label class="custom-control-label" for="tag183">房产服务</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag184" value="用户增长">
+                                    <label class="custom-control-label" for="tag184">用户增长</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag185" value="平台">
+                                    <label class="custom-control-label" for="tag185">平台</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag186" value="ue">
+                                    <label class="custom-control-label" for="tag186">ue</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag187" value="ued">
+                                    <label class="custom-control-label" for="tag187">ued</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag188" value="电话客服">
+                                    <label class="custom-control-label" for="tag188">电话客服</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag189" value="电商客服">
+                                    <label class="custom-control-label" for="tag189">电商客服</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag190" value="电话销售">
+                                    <label class="custom-control-label" for="tag190">电话销售</label>
+                                </div>
+                            </div>
+
                             <!--<div class="collapse multi-collapse" id="collapse2">-->
                             <!--<div class="form-row">-->
                             <!--<div class="custom-control custom-checkbox mr-2">-->
-                            <!--<input type="checkbox" class="custom-control-input" name="tag" id="tag4" value="">-->
-                            <!--<label class="custom-control-label" for="tag4">教育</label>-->
+                            <!--<input type="checkbox" class="custom-control-input" name="tag" id="tag38" value="golang">-->
+                            <!--<label class="custom-control-label" for="tag38">golang</label>-->
+                            <!--</div>-->
+                            <!--<div class="custom-control custom-checkbox mr-2">-->
+                            <!--<input type="checkbox" class="custom-control-input" name="tag" id="tag39" value="scala">-->
+                            <!--<label class="custom-control-label" for="tag39">scala</label>-->
+                            <!--</div>-->
+                            <!--<div class="custom-control custom-checkbox mr-2">-->
+                            <!--<input type="checkbox" class="custom-control-input" name="tag" id="tag40" value="flash">-->
+                            <!--<label class="custom-control-label" for="tag40">flash</label>-->
                             <!--</div>-->
                             <!--</div>-->
                             <!--</div>-->

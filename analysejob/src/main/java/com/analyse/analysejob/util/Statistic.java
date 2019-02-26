@@ -66,10 +66,10 @@ public class Statistic {
 		}
 	}
 	//2-25 pm
-
-	public TotalData getTotalData() {
+	//2-26 am
+	public TotalData getTotalData(String jobName) {
 		TotalData total=new TotalData();
-		total.setJobname(jobs.get(0).getJob_name());
+		total.setJobname(jobName);
 		List<CityData> cityData=new ArrayList();
 		List<DegreeData> degreeData=new ArrayList();
 		String[] axis=new String[city_salary.size()];
@@ -95,3 +95,4 @@ public class Statistic {
 		return total;
 	}
 }
+

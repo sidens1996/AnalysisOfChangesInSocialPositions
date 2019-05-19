@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>搜索结果</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-company_scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="css/fontastic.css">
+    <link rel="stylesheet" href="/css/fontastic.css">
     <!-- Google fonts - Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">-->
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]-->
+    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]&ndash;&gt;-->
 </head>
 <body>
 <div class="page">
@@ -42,16 +42,16 @@
                     <!-- Navbar Menu -->
                     <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                         <!--登录-->
-                        <li class="nav-item"><a href="login.html" th:href="@{/login}" class="nav-link"> <span class="d-none d-sm-inline">登录</span><i class="fa fa-sign-in"></i></a></li>
-                        <li class="nav-item"><a href="register.html" th:href="@{/register}" class="nav-link"> <span class="d-none d-sm-inline">注册</span><i class="fa fa-registered"></i></a> </li>
+                        <!--<li class="nav-item"><a href="login.html" class="nav-link"> <span class="d-none d-sm-inline">登录</span><i class="fa fa-sign-in"></i></a></li>-->
+                        <!--<li class="nav-item"><a href="register.html" class="nav-link"> <span class="d-none d-sm-inline">注册</span><i class="fa fa-registered"></i></a> </li>-->
                         <!--登录后-->
-                        <!--<li class="nva-item dropdown">-->
-                            <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">管理员</a>-->
-                            <!--<div class="dropdown-menu text-center">-->
-                                <!--<a class="dropdown-item" href="#">个人中心 <i class="fa fa-user-secret"></i> </a>-->
-                                <!--<a class="dropdown-item" href="login.html"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>-->
-                            <!--</div>-->
-                        <!--</li>-->
+                        <li class="nva-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" th:text="${session.userMessage.username}">管理员</a>
+                            <div class="dropdown-menu text-center">
+                                <a class="dropdown-item" href="#">个人中心 <i class="fa fa-user-secret"></i> </a>
+                                <a class="dropdown-item" href="login.html" th:href="@{/logout}"> &nbsp;&nbsp;&nbsp;退出&nbsp;&nbsp;&nbsp; <i class="fa fa-sign-out"></i> </a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -76,10 +76,10 @@
             <section class="dashboard-counts no-padding-bottom pt-0">
                 <div class="container-fluid">
                     <div class="row bg-white has-shadow">
-                        <form>
+                        <form th:action="@{/result(keyword=${keyword})}">
                             <div class="form-row">
                                 <div class="col-auto">
-                                    <input class="form-control" type="search" name="keywords">
+                                    <input class="form-control" type="search" name="keyword" th:value="${keyword}">
                                 </div>
                                 <div class="col-auto">
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
@@ -88,200 +88,272 @@
                         </form>
                     </div>
                     <div class="row bg-white has-shadow">
-                        <form>
+                        <form method="post" th:action="@{/result(keyword=${keyword})}">
                             <div class="form-row">
                                 <label class="mr-2">工作地点:</label>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox1" value="武汉">
-                                    <label class="custom-control-label" for="checkbox1">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox1" value="北京">
+                                    <label class="custom-control-label" for="checkbox1">北京</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox2" value="武汉">
-                                    <label class="custom-control-label" for="checkbox2">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox2" value="上海">
+                                    <label class="custom-control-label" for="checkbox2">上海</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox3" value="武汉">
-                                    <label class="custom-control-label" for="checkbox3">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox3" value="深圳">
+                                    <label class="custom-control-label" for="checkbox3">深圳</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox4" value="武汉">
-                                    <label class="custom-control-label" for="checkbox4">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox4" value="广州">
+                                    <label class="custom-control-label" for="checkbox4">广州</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox5" value="武汉">
-                                    <label class="custom-control-label" for="checkbox5">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox5" value="杭州">
+                                    <label class="custom-control-label" for="checkbox5">杭州</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox6" value="武汉">
-                                    <label class="custom-control-label" for="checkbox6">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox6" value="成都">
+                                    <label class="custom-control-label" for="checkbox6">成都</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox7" value="武汉">
-                                    <label class="custom-control-label" for="checkbox7">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox7" value="南京">
+                                    <label class="custom-control-label" for="checkbox7">南京</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox8" value="武汉">
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox8" value="武汉">
                                     <label class="custom-control-label" for="checkbox8">武汉</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox9" value="武汉">
-                                    <label class="custom-control-label" for="checkbox9">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox9" value="西安">
+                                    <label class="custom-control-label" for="checkbox9">西安</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox10" value="武汉">
-                                    <label class="custom-control-label" for="checkbox10">武汉</label>
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox10" value="厦门">
+                                    <label class="custom-control-label" for="checkbox10">厦门</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox11" value="长沙">
+                                    <label class="custom-control-label" for="checkbox11">长沙</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox12" value="苏州">
+                                    <label class="custom-control-label" for="checkbox12">苏州</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox13" value="天津">
+                                    <label class="custom-control-label" for="checkbox13">天津</label>
                                 </div>
                                 <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse1" >更多</button>
                             </div>
                             <div class="collapse multi-collapse" id="collapse1">
                                 <div class="form-row">
                                     <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox11" value="武汉">
-                                        <label class="custom-control-label" for="checkbox11">武汉</label>
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox14" value="重庆">
+                                        <label class="custom-control-label" for="checkbox14">重庆</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox12" value="武汉">
-                                        <label class="custom-control-label" for="checkbox12">武汉</label>
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox15" value="郑州">
+                                        <label class="custom-control-label" for="checkbox15">郑州</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="workpalce" id="checkbox13" value="武汉">
-                                        <label class="custom-control-label" for="checkbox13">武汉</label>
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox16" value="青岛">
+                                        <label class="custom-control-label" for="checkbox16">青岛</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox17" value="合肥">
+                                        <label class="custom-control-label" for="checkbox17">合肥</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox18" value="福州">
+                                        <label class="custom-control-label" for="checkbox18">福州</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox19" value="济南">
+                                        <label class="custom-control-label" for="checkbox19">济南</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox20" value="大连">
+                                        <label class="custom-control-label" for="checkbox20">大连</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox21" value="珠海">
+                                        <label class="custom-control-label" for="checkbox21">珠海</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox22" value="无锡">
+                                        <label class="custom-control-label" for="checkbox22">无锡</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox23" value="佛山">
+                                        <label class="custom-control-label" for="checkbox23">佛山</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox24" value="东莞">
+                                        <label class="custom-control-label" for="checkbox24">东莞</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox25" value="宁波">
+                                        <label class="custom-control-label" for="checkbox25">宁波</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox26" value="常州">
+                                        <label class="custom-control-label" for="checkbox26">常州</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox27" value="沈阳">
+                                        <label class="custom-control-label" for="checkbox27">沈阳</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox28" value="石家庄">
+                                        <label class="custom-control-label" for="checkbox28">石家庄</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox29" value="昆明">
+                                        <label class="custom-control-label" for="checkbox29">昆明</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-2">
+                                        <input type="checkbox" class="custom-control-input" name="job_city" id="checkbox30" value="南昌">
+                                        <label class="custom-control-label" for="checkbox30">南昌</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <label class="mr-2">工作经验:</label>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears1" value="应届毕业生">
-                                    <label class="custom-control-label" for="workyears1">应届毕业生</label>
+                                    <input type="checkbox" class="custom-control-input" name="work_years" id="work_years1" value="经验应届毕业生">
+                                    <label class="custom-control-label" for="work_years1">应届毕业生</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears2" value="3年及以下">
-                                    <label class="custom-control-label" for="workyears2">3年及以下</label>
+                                    <input type="checkbox" class="custom-control-input" name="work_years" id="work_years2" value="经验1年以下">
+                                    <label class="custom-control-label" for="work_years2">经验1年以下</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears3" value="3-5年">
-                                    <label class="custom-control-label" for="workyears3">3-5年</label>
+                                    <input type="checkbox" class="custom-control-input" name="work_years" id="work_years3" value="经验1-3年">
+                                    <label class="custom-control-label" for="work_years3">经验1-3年</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears4" value="5-10年">
-                                    <label class="custom-control-label" for="workyears4">5-10年</label>
+                                    <input type="checkbox" class="custom-control-input" name="work_years" id="work_years4" value="经验3-5年">
+                                    <label class="custom-control-label" for="work_years4">经验3-5年</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="workyears" id="workyears5" value="10年以上">
-                                    <label class="custom-control-label" for="workyears5">10年以上</label>
+                                    <input type="checkbox" class="custom-control-input" name="work_years" id="work_years5" value="经验5-10年">
+                                    <label class="custom-control-label" for="work_years5">经验5-10年</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mr-2">
+                                    <input type="checkbox" class="custom-control-input" name="work_years" id="work_years6" value="经验10年以上">
+                                    <label class="custom-control-label" for="work_years6">经验10年以上</label>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <label class="mr-2">学历要求:</label>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="dazhuan" value="大专">
-                                    <label class="custom-control-label" for="dazhuan">大专</label>
+                                <div class="custom-control custom-radio mr-2">
+                                    <input type="radio" class="custom-control-input" name="degree_need" id="buxian" value="学历不限">
+                                    <label class="custom-control-label" for="buxian">学历不限</label>
                                 </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="benke" value="本科">
-                                    <label class="custom-control-label" for="benke">本科</label>
+                                <div class="custom-control custom-radio mr-2">
+                                    <input type="radio" class="custom-control-input" name="degree_need" id="dazhuan" value="大专及以上">
+                                    <label class="custom-control-label" for="dazhuan">大专及以上</label>
                                 </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="shuoshi" value="硕士">
-                                    <label class="custom-control-label" for="shuoshi">硕士</label>
+                                <div class="custom-control custom-radio mr-2">
+                                    <input type="radio" class="custom-control-input" name="degree_need" id="benke" value="本科及以上">
+                                    <label class="custom-control-label" for="benke">本科及以上</label>
                                 </div>
-                                <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="degree" id="boshi" value="博士">
-                                    <label class="custom-control-label" for="boshi">博士</label>
+                                <div class="custom-control custom-radio mr-2">
+                                    <input type="radio" class="custom-control-input" name="degree_need" id="shuoshi" value="硕士及以上">
+                                    <label class="custom-control-label" for="shuoshi">硕士及以上</label>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <label class="mr-2">融资阶段:</label>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development1" value="未融资">
-                                    <label class="custom-control-label" for="development1">未融资</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development1" value="未融资">
+                                    <label class="custom-control-label" for="company_development1">未融资</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development2" value="天使轮">
-                                    <label class="custom-control-label" for="development2">天使轮</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development2" value="天使轮">
+                                    <label class="custom-control-label" for="company_development2">天使轮</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development3" value="A轮">
-                                    <label class="custom-control-label" for="development3">A轮</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development3" value="A轮">
+                                    <label class="custom-control-label" for="company_development3">A轮</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development4" value="B轮">
-                                    <label class="custom-control-label" for="development4">B轮</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development4" value="B轮">
+                                    <label class="custom-control-label" for="company_development4">B轮</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development5" value="C轮">
-                                    <label class="custom-control-label" for="development5">C轮</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development5" value="C轮">
+                                    <label class="custom-control-label" for="company_development5">C轮</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development6" value="D轮及以上">
-                                    <label class="custom-control-label" for="development6">D轮及以上</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development6" value="D轮及以上">
+                                    <label class="custom-control-label" for="company_development6">D轮及以上</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development7" value="上市公司">
-                                    <label class="custom-control-label" for="development7">上市公司</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development7" value="上市公司">
+                                    <label class="custom-control-label" for="company_development7">上市公司</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="development" id="development8" value="不需要融资">
-                                    <label class="custom-control-label" for="development8">不需要融资</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_development" id="company_development8" value="不需要融资">
+                                    <label class="custom-control-label" for="company_development8">不需要融资</label>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <label class="mr-2">公司规模:</label>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="scale" id="scale1" value="少于15人">
-                                    <label class="custom-control-label" for="scale1">少于15人</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_scale" id="company_scale1" value="少于15人">
+                                    <label class="custom-control-label" for="company_scale1">少于15人</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="scale" id="scale2" value="15-50人">
-                                    <label class="custom-control-label" for="scale2">15-50人</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_scale" id="company_scale2" value="15-50人">
+                                    <label class="custom-control-label" for="company_scale2">15-50人</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="scale" id="scale3" value="50-150人">
-                                    <label class="custom-control-label" for="scale3">50-150人</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_scale" id="company_scale3" value="50-150人">
+                                    <label class="custom-control-label" for="company_scale3">50-150人</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="scale" id="scale4" value="150-500人">
-                                    <label class="custom-control-label" for="scale4">150-500人</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_scale" id="company_scale4" value="150-500人">
+                                    <label class="custom-control-label" for="company_scale4">150-500人</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="scale" id="scale5" value="500-2000人">
-                                    <label class="custom-control-label" for="scale5">500-2000人</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_scale" id="company_scale5" value="500-2000人">
+                                    <label class="custom-control-label" for="company_scale5">500-2000人</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="scale" id="scale6" value="2000人以上">
-                                    <label class="custom-control-label" for="scale6">2000人以上</label>
+                                    <input type="checkbox" class="custom-control-input" name="company_scale" id="company_scale6" value="2000人以上">
+                                    <label class="custom-control-label" for="company_scale6">2000人以上</label>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <label class="mr-2">工作标签:</label>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag1" value="">
-                                    <label class="custom-control-label" for="tag1">移动互联网</label>
+                                    <input type="checkbox" class="custom-control-input" name="tags" id="tags1" value="移动互联网">
+                                    <label class="custom-control-label" for="tags1">移动互联网</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag2" value="">
-                                    <label class="custom-control-label" for="tag2">电子商务</label>
+                                    <input type="checkbox" class="custom-control-input" name="tags" id="tags2" value="电子商务">
+                                    <label class="custom-control-label" for="tags2">电子商务</label>
                                 </div>
                                 <div class="custom-control custom-checkbox mr-2">
-                                    <input type="checkbox" class="custom-control-input" name="tag" id="tag3" value="">
-                                    <label class="custom-control-label" for="tag3">金融</label>
+                                    <input type="checkbox" class="custom-control-input" name="tags" id="tags3" value="金融">
+                                    <label class="custom-control-label" for="tags3">金融</label>
                                 </div>
                                 <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#collapse2" >更多</button>
                             </div>
                             <div class="collapse multi-collapse" id="collapse2">
                                 <div class="form-row">
                                     <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag4" value="">
-                                        <label class="custom-control-label" for="tag4">教育</label>
+                                        <input type="checkbox" class="custom-control-input" name="tags" id="tags4" value="教育">
+                                        <label class="custom-control-label" for="tags4">教育</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag5" value="">
-                                        <label class="custom-control-label" for="tag5">游戏</label>
+                                        <input type="checkbox" class="custom-control-input" name="tags" id="tags5" value="游戏">
+                                        <label class="custom-control-label" for="tags5">游戏</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-2">
-                                        <input type="checkbox" class="custom-control-input" name="tag" id="tag6" value="">
-                                        <label class="custom-control-label" for="tag6">O2O</label>
+                                        <input type="checkbox" class="custom-control-input" name="tags" id="tags6" value="O2O">
+                                        <label class="custom-control-label" for="tags6">O2O</label>
                                     </div>
                                 </div>
                             </div>
@@ -295,163 +367,52 @@
             <!-- 搜索结果模块页面-->
             <section class="dashboard-counts no-padding-bottom pt-3">
                 <div class="container-fluid">
-                    <div class="row bg-white has-shadow">
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
+                    <div class="row bg-white has-shadow" th:each="jb:${jobs}">
+                        <div class="col-8 offset-2 mb-2" style="border: 1px solid #e6e6e6;">
                             <div class="row p-0">
                                 <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="https://www.lagou.com/jobs/5299242.html">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
+                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="https://www.lagou.com/jobs/5299242.html" th:text="${jb.job_name} + '[' + ${jb.job_city} + ']'">JAVA开发工程师[武汉]</a></h5>
+                                    <span class="small text-secondary" th:text="${jb.publish_time}">2018-4-9</span><br>
+                                    <h5 class="d-inline-block text-red pr-2" th:text="${jb.salary}">16k-18k</h5>
+                                    <span class="small" th:text="${jb.work_years} + '/' + ${jb.degree_need}">经验1-3年/本科</span>
                                 </div>
                                 <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-8 offset-2 mb-3" style="border: 1px solid #e6e6e6;">
-                            <div class="row p-0">
-                                <div class="col-md-6">
-                                    <h5 class="d-inline-block"><a class="nav-link pl-0" href="#">JAVA开发工程师[武汉]</a></h5>
-                                    <span class="small text-secondary">2018-4-9</span><br>
-                                    <h5 class="d-inline-block text-red pr-2">16k-18k</h5>
-                                    <span class="small">经验1-3年/本科</span>
-                                </div>
-                                <div class="col-md-6 pt-2">
-                                    <span class="small">移动互联网,电子商务 / B轮 / 150-500人</span>
-                                    <span class="badge badge-secondary">软件开发 数据库</span>
+                                    <span class="small" th:text="${jb.company_field} + ' / ' + ${jb.company_development} + ' / ' + ${jb.company_scale}">移动互联网,电子商务 / B轮 / 150-500人</span>
+                                    <span class="badge badge-secondary" th:text="${jb.tags}">软件开发 数据库</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row bg-white has-shadow">
+                        <p>每页<span class="text-primary">10</span>条，共<span class="text-primary" th:text="${totalPages}">1</span>页</p>
+                    </div>
                     <nav class="mt-3">
                         <ul class="pagination justify-content-center">
+                            <!--上一页-->
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                <a th:if="${hasPrev}" class="page-link" href="#" th:href="@{/result(page = ${currentPage} - 1, keyword=${keyword}, job_city=${job.job_city}, work_years = ${job.work_years},
+                                degree_need=${job.degree_need}, company_development=${job.company_development}, company_scale=${job.company_scale}, company_field=${job.company_field}, tags=${job.tags})}">
                                     <span aria-hidden="true">&laquo;</span>
                                     <span class="sr-only">Previous</span>
                                 </a>
+                                <a th:unless="${hasPrev}" class="page-link disabled">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <!--主体动态加载-->
+                            <li class="page-item" th:each="page : ${pages}" th:class="(${page} == ${currentPage})? 'page-item active': ((${page} == 0) ? 'page-item disabled':'page-item')">
+                                <a class="page-link" href="#" th:href="@{/result(page=${page}, keyword=${keyword}, job_city=${job.job_city}, work_years = ${job.work_years},
+                                degree_need=${job.degree_need}, company_development=${job.company_development}, company_scale=${job.company_scale}, company_field=${job.company_field}, tags=${job.tags})}" th:text="(${page} == 0) ? '...': ${page}">1</a>
+                            </li>
+                            <!--下一页-->
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
+                                <a th:if="${hasNext}" class="page-link" href="#" th:href="@{/result(page = ${currentPage} + 1, keyword=${keyword}, job_city=${job.job_city}, work_years = ${job.work_years},
+                                degree_need=${job.degree_need}, company_development=${job.company_development}, company_scale=${job.company_scale}, company_field=${job.company_field}, tags=${job.tags})}">
                                     <span aria-hidden="true">&raquo;</span>
                                     <span class="sr-only">Next</span>
+                                </a>
+                                <a th:unless="${hasNext}" class="page-link disabled">
+                                    <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>
@@ -475,12 +436,41 @@
     </div>
 </div>
 <!-- JavaScript files-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/popper/popper.min.js"> </script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/popper/popper.min.js"> </script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- Main File-->
-<script src="js/front.js"></script>
+<script th:inline="javascript" type="text/javascript">
+    $(function () {
+
+        var city = [[${job.job_city}]].toString()
+        var workyear = [[${job.work_years}]].toString()
+        var degree = [[${job.degree_need}]].toString()
+        var development = [[${job.company_development}]].toString()
+        var scale = [[${job.company_scale}]].toString()
+        var tag = [[${job.tags}]].toString()
+        if (city != null && city != "") {
+            $("input[name='job_city']").filter(function(){return city.indexOf($(this).val()) >= 0;}).attr("checked", true)
+        }
+        if (workyear != null && workyear != "") {
+            $("input[name='work_years']").filter(function(){return workyear.indexOf($(this).val()) >= 0;}).attr("checked", true)
+        }
+        if (degree != null && degree != "") {
+            $("input[name='degree_need']").filter(function(){return degree.indexOf($(this).val()) >= 0;}).attr("checked", true)
+        }
+        if (development != null && development != "") {
+            $("input[name='company_development']").filter(function(){return development.indexOf($(this).val()) >= 0;}).attr("checked", true)
+        }
+        if (scale != null && scale != "") {
+            $("input[name='company_scale']").filter(function(){return scale.indexOf($(this).val()) >= 0;}).attr("checked", true)
+        }
+        if (tag != null && tag != "") {
+            $("input[name='tags']").filter(function(){return tag.indexOf($(this).val()) >= 0;}).attr("checked", true)
+        }
+    })
+</script>
+<script src="/js/front.js"></script>
 </body>
 </html>

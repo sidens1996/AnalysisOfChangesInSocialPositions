@@ -1,771 +1,16 @@
 $(function () {
-    // 图表1
-    var data = [{
-        name: '海门',
-        value: 9
-    },
-        {
-            name: '鄂尔多斯',
-            value: 12
-        },
-        {
-            name: '招远',
-            value: 12
-        },
-        {
-            name: '舟山',
-            value: 12
-        },
-        {
-            name: '齐齐哈尔',
-            value: 14
-        },
-        {
-            name: '盐城',
-            value: 15
-        },
-        {
-            name: '赤峰',
-            value: 16
-        },
-        {
-            name: '青岛',
-            value: 18
-        },
-        {
-            name: '乳山',
-            value: 18
-        },
-        {
-            name: '金昌',
-            value: 19
-        },
-        {
-            name: '泉州',
-            value: 21
-        },
-        {
-            name: '莱西',
-            value: 21
-        },
-        {
-            name: '日照',
-            value: 21
-        },
-        {
-            name: '胶南',
-            value: 22
-        },
-        {
-            name: '南通',
-            value: 23
-        },
-        {
-            name: '拉萨',
-            value: 24
-        },
-        {
-            name: '云浮',
-            value: 24
-        },
-        {
-            name: '梅州',
-            value: 25
-        },
-        {
-            name: '文登',
-            value: 25
-        },
-        {
-            name: '上海',
-            value: 25
-        },
-        {
-            name: '攀枝花',
-            value: 25
-        },
-        {
-            name: '威海',
-            value: 25
-        },
-        {
-            name: '承德',
-            value: 25
-        },
-        {
-            name: '厦门',
-            value: 26
-        },
-        {
-            name: '汕尾',
-            value: 26
-        },
-        {
-            name: '潮州',
-            value: 26
-        },
-        {
-            name: '丹东',
-            value: 27
-        },
-        {
-            name: '太仓',
-            value: 27
-        },
-        {
-            name: '曲靖',
-            value: 27
-        },
-        {
-            name: '烟台',
-            value: 28
-        },
-        {
-            name: '福州',
-            value: 29
-        },
-        {
-            name: '瓦房店',
-            value: 30
-        },
-        {
-            name: '即墨',
-            value: 30
-        },
-        {
-            name: '抚顺',
-            value: 31
-        },
-        {
-            name: '玉溪',
-            value: 31
-        },
-        {
-            name: '张家口',
-            value: 31
-        },
-        {
-            name: '阳泉',
-            value: 31
-        },
-        {
-            name: '莱州',
-            value: 32
-        },
-        {
-            name: '湖州',
-            value: 32
-        },
-        {
-            name: '汕头',
-            value: 32
-        },
-        {
-            name: '昆山',
-            value: 33
-        },
-        {
-            name: '宁波',
-            value: 33
-        },
-        {
-            name: '湛江',
-            value: 33
-        },
-        {
-            name: '揭阳',
-            value: 34
-        },
-        {
-            name: '荣成',
-            value: 34
-        },
-        {
-            name: '连云港',
-            value: 35
-        },
-        {
-            name: '葫芦岛',
-            value: 35
-        },
-        {
-            name: '常熟',
-            value: 36
-        },
-        {
-            name: '东莞',
-            value: 36
-        },
-        {
-            name: '河源',
-            value: 36
-        },
-        {
-            name: '淮安',
-            value: 36
-        },
-        {
-            name: '泰州',
-            value: 36
-        },
-        {
-            name: '南宁',
-            value: 37
-        },
-        {
-            name: '营口',
-            value: 37
-        },
-        {
-            name: '惠州',
-            value: 37
-        },
-        {
-            name: '江阴',
-            value: 37
-        },
-        {
-            name: '蓬莱',
-            value: 37
-        },
-        {
-            name: '韶关',
-            value: 38
-        },
-        {
-            name: '嘉峪关',
-            value: 38
-        },
-        {
-            name: '广州',
-            value: 38
-        },
-        {
-            name: '延安',
-            value: 38
-        },
-        {
-            name: '太原',
-            value: 39
-        },
-        {
-            name: '清远',
-            value: 39
-        },
-        {
-            name: '中山',
-            value: 39
-        },
-        {
-            name: '昆明',
-            value: 39
-        },
-        {
-            name: '寿光',
-            value: 40
-        },
-        {
-            name: '盘锦',
-            value: 40
-        },
-        {
-            name: '长治',
-            value: 41
-        },
-        {
-            name: '深圳',
-            value: 41
-        },
-        {
-            name: '珠海',
-            value: 42
-        },
-        {
-            name: '宿迁',
-            value: 43
-        },
-        {
-            name: '咸阳',
-            value: 43
-        },
-        {
-            name: '铜川',
-            value: 44
-        },
-        {
-            name: '平度',
-            value: 44
-        },
-        {
-            name: '佛山',
-            value: 44
-        },
-        {
-            name: '海口',
-            value: 44
-        },
-        {
-            name: '江门',
-            value: 45
-        },
-        {
-            name: '章丘',
-            value: 45
-        },
-        {
-            name: '肇庆',
-            value: 46
-        },
-        {
-            name: '大连',
-            value: 47
-        },
-        {
-            name: '临汾',
-            value: 47
-        },
-        {
-            name: '吴江',
-            value: 47
-        },
-        {
-            name: '石嘴山',
-            value: 49
-        },
-        {
-            name: '沈阳',
-            value: 50
-        },
-        {
-            name: '苏州',
-            value: 50
-        },
-        {
-            name: '茂名',
-            value: 50
-        },
-        {
-            name: '嘉兴',
-            value: 51
-        },
-        {
-            name: '长春',
-            value: 51
-        },
-        {
-            name: '胶州',
-            value: 52
-        },
-        {
-            name: '银川',
-            value: 52
-        },
-        {
-            name: '张家港',
-            value: 52
-        },
-        {
-            name: '三门峡',
-            value: 53
-        },
-        {
-            name: '锦州',
-            value: 54
-        },
-        {
-            name: '南昌',
-            value: 54
-        },
-        {
-            name: '柳州',
-            value: 54
-        },
-        {
-            name: '三亚',
-            value: 54
-        },
-        {
-            name: '自贡',
-            value: 56
-        },
-        {
-            name: '吉林',
-            value: 56
-        },
-        {
-            name: '阳江',
-            value: 57
-        },
-        {
-            name: '泸州',
-            value: 57
-        },
-        {
-            name: '西宁',
-            value: 57
-        },
-        {
-            name: '宜宾',
-            value: 58
-        },
-        {
-            name: '呼和浩特',
-            value: 58
-        },
-        {
-            name: '成都',
-            value: 58
-        },
-        {
-            name: '大同',
-            value: 58
-        },
-        {
-            name: '镇江',
-            value: 59
-        },
-        {
-            name: '桂林',
-            value: 59
-        },
-        {
-            name: '张家界',
-            value: 59
-        },
-        {
-            name: '宜兴',
-            value: 59
-        },
-        {
-            name: '北海',
-            value: 60
-        },
-        {
-            name: '西安',
-            value: 61
-        },
-        {
-            name: '金坛',
-            value: 62
-        },
-        {
-            name: '东营',
-            value: 62
-        },
-        {
-            name: '牡丹江',
-            value: 63
-        },
-        {
-            name: '遵义',
-            value: 63
-        },
-        {
-            name: '绍兴',
-            value: 63
-        },
-        {
-            name: '扬州',
-            value: 64
-        },
-        {
-            name: '常州',
-            value: 64
-        },
-        {
-            name: '潍坊',
-            value: 65
-        },
-        {
-            name: '重庆',
-            value: 66
-        },
-        {
-            name: '台州',
-            value: 67
-        },
-        {
-            name: '南京',
-            value: 67
-        },
-        {
-            name: '滨州',
-            value: 70
-        },
-        {
-            name: '贵阳',
-            value: 71
-        },
-        {
-            name: '无锡',
-            value: 71
-        },
-        {
-            name: '本溪',
-            value: 71
-        },
-        {
-            name: '克拉玛依',
-            value: 72
-        },
-        {
-            name: '渭南',
-            value: 72
-        },
-        {
-            name: '马鞍山',
-            value: 72
-        },
-        {
-            name: '宝鸡',
-            value: 72
-        },
-        {
-            name: '焦作',
-            value: 75
-        },
-        {
-            name: '句容',
-            value: 75
-        },
-        {
-            name: '北京',
-            value: 79
-        },
-        {
-            name: '徐州',
-            value: 79
-        },
-        {
-            name: '衡水',
-            value: 80
-        },
-        {
-            name: '包头',
-            value: 80
-        },
-        {
-            name: '绵阳',
-            value: 80
-        },
-        {
-            name: '乌鲁木齐',
-            value: 84
-        },
-        {
-            name: '枣庄',
-            value: 84
-        },
-        {
-            name: '杭州',
-            value: 84
-        },
-        {
-            name: '淄博',
-            value: 85
-        },
-        {
-            name: '鞍山',
-            value: 86
-        },
-        {
-            name: '溧阳',
-            value: 86
-        },
-        {
-            name: '库尔勒',
-            value: 86
-        },
-        {
-            name: '安阳',
-            value: 90
-        },
-        {
-            name: '开封',
-            value: 90
-        },
-        {
-            name: '济南',
-            value: 92
-        },
-        {
-            name: '德阳',
-            value: 93
-        },
-        {
-            name: '温州',
-            value: 95
-        },
-        {
-            name: '九江',
-            value: 96
-        },
-        {
-            name: '邯郸',
-            value: 98
-        },
-        {
-            name: '临安',
-            value: 99
-        },
-        {
-            name: '兰州',
-            value: 99
-        },
-        {
-            name: '沧州',
-            value: 100
-        },
-        {
-            name: '临沂',
-            value: 103
-        },
-        {
-            name: '南充',
-            value: 104
-        },
-        {
-            name: '天津',
-            value: 105
-        },
-        {
-            name: '富阳',
-            value: 106
-        },
-        {
-            name: '泰安',
-            value: 112
-        },
-        {
-            name: '诸暨',
-            value: 112
-        },
-        {
-            name: '郑州',
-            value: 113
-        },
-        {
-            name: '哈尔滨',
-            value: 114
-        },
-        {
-            name: '聊城',
-            value: 116
-        },
-        {
-            name: '芜湖',
-            value: 117
-        },
-        {
-            name: '唐山',
-            value: 119
-        },
-        {
-            name: '平顶山',
-            value: 119
-        },
-        {
-            name: '邢台',
-            value: 119
-        },
-        {
-            name: '德州',
-            value: 120
-        },
-        {
-            name: '济宁',
-            value: 120
-        },
-        {
-            name: '荆州',
-            value: 127
-        },
-        {
-            name: '宜昌',
-            value: 130
-        },
-        {
-            name: '义乌',
-            value: 132
-        },
-        {
-            name: '丽水',
-            value: 133
-        },
-        {
-            name: '洛阳',
-            value: 134
-        },
-        {
-            name: '秦皇岛',
-            value: 136
-        },
-        {
-            name: '株洲',
-            value: 143
-        },
-        {
-            name: '石家庄',
-            value: 147
-        },
-        {
-            name: '莱芜',
-            value: 148
-        },
-        {
-            name: '常德',
-            value: 152
-        },
-        {
-            name: '保定',
-            value: 153
-        },
-        {
-            name: '湘潭',
-            value: 154
-        },
-        {
-            name: '金华',
-            value: 157
-        },
-        {
-            name: '岳阳',
-            value: 169
-        },
-        {
-            name: '长沙',
-            value: 175
-        },
-        {
-            name: '衢州',
-            value: 177
-        },
-        {
-            name: '廊坊',
-            value: 193
-        },
-        {
-            name: '菏泽',
-            value: 194
-        },
-        {
-            name: '合肥',
-            value: 229
-        },
-        {
-            name: '武汉',
-            value: 273
-        },
-        {
-            name: '大庆',
-            value: 279
-        },
-        {
-            name: "阿坝",
-            value: 360
-        },
-    ];
-    var geoCoordMap = {
+    $("#recommend").click(function () {
+        var tags=""
+        $("input[name='tag']:checked").each(function () {
+            tags = tags  + $(this).val() + ","
+        })
+        $("#hide1").show();
+        $("#hide2").show();
+        $.getJSON("/recommendResult", {tags:tags.substring(0,tags.length - 1)},function (data) {
+            $("#block2").show()
+            $("#block1").removeClass("d-none")
+            $("#block1 span.text-red").text(data.jobname)
+            var geoCoordMap = {
         "阿巴嘎旗": [114.97, 44.03],
         "阿巴哈纳尔旗": [116.08, 43.95],
         "阿坝": [101.72, 31.93],
@@ -3090,9 +2335,15 @@ $(function () {
             name: '人数',
             type: 'scatter',
             coordinateSystem: 'geo',
-            data: convertData(data),
+            // data: convertData(data),
             symbolSize: function(val) {
-                return val[2] / 10;
+                num = 5;
+                if (val[2] < 5) {
+                    return num;
+                } else {
+                    num += val[2] / 5;
+                    return num;
+                }
             },
             label: {
                 normal: {
@@ -3114,11 +2365,17 @@ $(function () {
                 name: 'Top 5',
                 type: 'effectScatter',
                 coordinateSystem: 'geo',
-                data: convertData(data.sort(function(a, b) {
-                    return b.value - a.value;
-                }).slice(0, 3)),
+                // data: convertData(data.sort(function(a, b) {
+                //     return b.value - a.value;
+                // }).slice(0, 3)),
                 symbolSize: function(val) {
-                    return val[2] / 10;
+                    num = 5;
+                    if (val[2] < 5) {
+                        return num;
+                    } else {
+                        num += val[2] / 5;
+                        return num;
+                    }
                 },
                 showEffectOn: 'render',
                 rippleEffect: {
@@ -3168,8 +2425,8 @@ $(function () {
 
         visualMap: {
             show: false,
-            min: 80,
-            max: 600,
+            min: 0,
+            max: 1000,
             inRange: {
                 colorLightness: [0, 1]
             }
@@ -3180,13 +2437,13 @@ $(function () {
                 type:'pie',
                 radius : '55%',
                 center: ['50%', '50%'],
-                data:[
-                    {value:335, name:'大专'},
-                    {value:310, name:'本科'},
-                    {value:274, name:'硕士'},
-                    {value:235, name:'博士'},
-                    {value:400, name:'其他'}
-                ].sort(function (a, b) { return a.value - b.value}),
+                // data:[
+                //     {value:335, name:'大专'},
+                //     {value:310, name:'本科'},
+                //     {value:274, name:'硕士'},
+                //     {value:235, name:'博士'},
+                //     {value:400, name:'其他'}
+                // ].sort(function (a, b) { return a.value - b.value}),
                 roseType: 'angle',
                 label: {
                     normal: {
@@ -3207,7 +2464,7 @@ $(function () {
                 },
                 itemStyle: {
                     normal: {
-                        color: '#c23531',
+                        color: '#c23e3f',
                         shadowBlur: 200,
                         shadowColor: 'rgba(0, 0, 0, 0.5)'
                     }
@@ -3217,497 +2474,178 @@ $(function () {
     };
     var myChart2 = echarts.init(document.getElementById('echarts2'))
     myChart2.setOption(option2);
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-    //图表3
-    var dataAxis = ['宁波', '深圳', '广州', '杭州', '成都', '武汉', '南京', '厦门', '西安', '长沙', '郑州', '重庆', '合肥', '天津', '福州', '济南', '无锡', '青岛', '大连', '东莞'];
-    var data = [15, 18, 19, 13, 12, 10, 8, 7, 10, 12, 15, 14, 14, 12, 13, 16, 18, 13, 15, 5];
-    var yMax = 20;
-    var dataShadow = [];
-
-    for (var i = 0; i < data.length; i++) {
-        dataShadow.push(yMax);
-    }
-
-    option3 = {
-        title: {
-            subtext: '(薪资为月份工资，以k为单位)'
-        },
-        xAxis: {
-            data: dataAxis,
-            axisLabel: {
-                inside: true,
-                textStyle: {
-                    color: '#fff'
-                }
-            },
-            axisTick: {
-                show: false
-            },
-            axisLine: {
-                show: false
-            },
-            z: 10
-        },
-        yAxis: {
-            axisLine: {
-                show: false
-            },
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                textStyle: {
-                    color: '#999'
-                }
-            }
-        },
-        dataZoom: [
-            {
-                type: 'inside'
-            }
-        ],
-        series: [
-            { // For shadow
-                type: 'bar',
-                itemStyle: {
-                    normal: {color: 'rgba(0,0,0,0.05)'}
+            myChart1.setOption({
+                series: [{
+                    data: convertData(data.cityData),
                 },
-                barGap:'-100%',
-                barCategoryGap:'40%',
-                data: dataShadow,
-                animation: false
-            },
-            {
-                type: 'bar',
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [
-                                {offset: 0, color: '#83bff6'},
-                                {offset: 0.5, color: '#188df0'},
-                                {offset: 1, color: '#188df0'}
-                            ]
-                        )
+                    {
+                        data: convertData(data.cityData.sort(function (a, b) {
+                            return b.value - a.value;
+                        }).slice(0, 3)),
+                    }
+                ]
+            })
+            myChart2.setOption({
+                series : [
+                    {
+                        data:data.degreeData.sort(function (a, b) { return a.value - b.value}),
+                    }
+                ]
+            })
+            //图表三
+            var dataAxis = data.dataAxis
+            var datavalue = data.salarydata
+            var yMax = 20;
+            var dataShadow = [];
+
+            for (var i = 0; i < data.length; i++) {
+                dataShadow.push(yMax);
+            }
+
+            option3 = {
+                title: {
+                    subtext: '(薪资为月份工资，以元/每月为单位)'
+                },
+                xAxis: {
+                    data: dataAxis,
+                    axisLabel: {
+                        inside: true,
+                        textStyle: {
+                            color: '#fff'
+                        }
                     },
-                    emphasis: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [
-                                {offset: 0, color: '#2378f7'},
-                                {offset: 0.7, color: '#2378f7'},
-                                {offset: 1, color: '#83bff6'}
-                            ]
-                        )
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    z: 10
+                },
+                yAxis: {
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#999'
+                        }
                     }
                 },
-                data: data
-            }
-        ]
-    };
+                dataZoom: [
+                    {
+                        type: 'inside'
+                    }
+                ],
+                series: [
+                    { // For shadow
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {color: 'rgba(0,0,0,0.05)'}
+                        },
+                        barGap:'-100%',
+                        barCategoryGap:'40%',
+                        data: dataShadow,
+                        animation: false
+                    },
+                    {
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        {offset: 0, color: '#83bff6'},
+                                        {offset: 0.5, color: '#188df0'},
+                                        {offset: 1, color: '#188df0'}
+                                    ]
+                                )
+                            },
+                            emphasis: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        {offset: 0, color: '#2378f7'},
+                                        {offset: 0.7, color: '#2378f7'},
+                                        {offset: 1, color: '#83bff6'}
+                                    ]
+                                )
+                            }
+                        },
+                        data: datavalue
+                    }
+                ]
+            };
 
-    var myChart3 = echarts.init(document.getElementById('echarts3'))
-    myChart3.setOption(option3);
+            var myChart3 = echarts.init(document.getElementById('echarts3'))
+            myChart3.setOption(option3);
 
 // Enable data zoom when user click bar.
-    var zoomSize = 6;
-    myChart3.on('click', function (params) {
-        console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
-        myChart3.dispatchAction({
-            type: 'dataZoom',
-            startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
-            endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
-        });
-    });
+            var zoomSize = 6;
+            myChart3.on('click', function (params) {
+                console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+                myChart3.dispatchAction({
+                    type: 'dataZoom',
+                    startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+                    endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+                });
+            });
+            //图表四
+            var keywords = data.keywords
+            var data = [];
+            for (var name in keywords) {
+                data.push({
+                    name: name,
+                    value: Math.sqrt(keywords[name])
+                })
+            }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    //图标4
-    var keywords = {
-        "visualMap": 22199,
-        "continuous": 10288,
-        "contoller": 620,
-        "series": 274470,
-        "gauge": 12311,
-        "detail": 1206,
-        "piecewise": 4885,
-        "textStyle": 32294,
-        "markPoint": 18574,
-        "pie": 38929,
-        "roseType": 969,
-        "label": 37517,
-        "emphasis": 12053,
-        "yAxis": 57299,
-        "name": 15418,
-        "type": 22905,
-        "gridIndex": 5146,
-        "normal": 49487,
-        "itemStyle": 33837,
-        "min": 4500,
-        "silent": 5744,
-        "animation": 4840,
-        "offsetCenter": 232,
-        "inverse": 3706,
-        "borderColor": 4812,
-        "markLine": 16578,
-        "line": 76970,
-        "radiusAxis": 6704,
-        "radar": 15964,
-        "data": 60679,
-        "dataZoom": 24347,
-        "tooltip": 43420,
-        "toolbox": 25222,
-        "geo": 16904,
-        "parallelAxis": 4029,
-        "parallel": 5319,
-        "max": 3393,
-        "bar": 43066,
-        "heatmap": 3110,
-        "map": 20285,
-        "animationDuration": 3425,
-        "animationDelay": 2431,
-        "splitNumber": 5175,
-        "axisLine": 12738,
-        "lineStyle": 19601,
-        "splitLine": 7133,
-        "axisTick": 8831,
-        "axisLabel": 17516,
-        "pointer": 590,
-        "color": 23426,
-        "title": 38497,
-        "formatter": 15214,
-        "slider": 7236,
-        "legend": 66514,
-        "grid": 28516,
-        "smooth": 1295,
-        "smoothMonotone": 696,
-        "sampling": 757,
-        "feature": 12815,
-        "saveAsImage": 2616,
-        "polar": 6279,
-        "calculable": 879,
-        "backgroundColor": 9419,
-        "excludeComponents": 130,
-        "show": 20620,
-        "text": 2592,
-        "icon": 2782,
-        "dimension": 478,
-        "inRange": 1060,
-        "animationEasing": 2983,
-        "animationDurationUpdate": 2259,
-        "animationDelayUpdate": 2236,
-        "animationEasingUpdate": 2213,
-        "xAxis": 89459,
-        "angleAxis": 5469,
-        "showTitle": 484,
-        "dataView": 2754,
-        "restore": 932,
-        "timeline": 10104,
-        "range": 477,
-        "value": 5732,
-        "precision": 878,
-        "target": 1433,
-        "zlevel": 5361,
-        "symbol": 8718,
-        "interval": 7964,
-        "symbolSize": 5300,
-        "showSymbol": 1247,
-        "inside": 8913,
-        "xAxisIndex": 3843,
-        "orient": 4205,
-        "boundaryGap": 5073,
-        "nameGap": 4896,
-        "zoomLock": 571,
-        "hoverAnimation": 2307,
-        "legendHoverLink": 3553,
-        "stack": 2907,
-        "throttle": 466,
-        "connectNulls": 897,
-        "clipOverflow": 826,
-        "startValue": 551,
-        "minInterval": 3292,
-        "opacity": 3097,
-        "splitArea": 4775,
-        "filterMode": 635,
-        "end": 409,
-        "left": 6475,
-        "funnel": 2238,
-        "lines": 6403,
-        "baseline": 431,
-        "align": 2608,
-        "coord": 897,
-        "nameTextStyle": 7477,
-        "width": 4338,
-        "shadowBlur": 4493,
-        "effect": 929,
-        "period": 225,
-        "areaColor": 631,
-        "borderWidth": 3654,
-        "nameLocation": 4418,
-        "position": 11723,
-        "containLabel": 1701,
-        "scatter": 10718,
-        "areaStyle": 5310,
-        "scale": 3859,
-        "pieces": 414,
-        "categories": 1000,
-        "selectedMode": 3825,
-        "itemSymbol": 273,
-        "effectScatter": 7147,
-        "fontStyle": 3376,
-        "fontSize": 3386,
-        "margin": 1034,
-        "iconStyle": 2257,
-        "link": 1366,
-        "axisPointer": 5245,
-        "showDelay": 896,
-        "graph": 22194,
-        "subtext": 1442,
-        "selected": 2881,
-        "barCategoryGap": 827,
-        "barGap": 1094,
-        "barWidth": 1521,
-        "coordinateSystem": 3622,
-        "barBorderRadius": 284,
-        "z": 4014,
-        "polarIndex": 1456,
-        "shadowOffsetX": 3046,
-        "shadowColor": 3771,
-        "shadowOffsetY": 2475,
-        "height": 1988,
-        "barMinHeight": 575,
-        "lang": 131,
-        "symbolRotate": 2752,
-        "symbolOffset": 2549,
-        "showAllSymbol": 942,
-        "transitionDuration": 993,
-        "bottom": 3724,
-        "fillerColor": 229,
-        "nameMap": 1249,
-        "barMaxWidth": 747,
-        "radius": 2103,
-        "center": 2425,
-        "magicType": 3276,
-        "labelPrecision": 248,
-        "option": 654,
-        "seriesIndex": 935,
-        "controlPosition": 121,
-        "itemGap": 3188,
-        "padding": 3481,
-        "shadowStyle": 347,
-        "boxplot": 1394,
-        "labelFormatter": 264,
-        "realtime": 631,
-        "dataBackgroundColor": 239,
-        "showDetail": 247,
-        "showDataShadow": 217,
-        "x": 684,
-        "valueDim": 499,
-        "onZero": 931,
-        "right": 3255,
-        "clockwise": 1035,
-        "itemWidth": 1732,
-        "trigger": 3840,
-        "axis": 379,
-        "selectedOffset": 670,
-        "startAngle": 1293,
-        "minAngle": 590,
-        "top": 4637,
-        "avoidLabelOverlap": 870,
-        "labelLine": 3785,
-        "sankey": 2933,
-        "endAngle": 213,
-        "start": 779,
-        "roam": 1738,
-        "fontWeight": 2828,
-        "fontFamily": 2490,
-        "subtextStyle": 2066,
-        "indicator": 853,
-        "sublink": 708,
-        "zoom": 1038,
-        "subtarget": 659,
-        "length": 1060,
-        "itemSize": 505,
-        "controlStyle": 452,
-        "yAxisIndex": 2529,
-        "edgeLabel": 1188,
-        "radiusAxisIndex": 354,
-        "scaleLimit": 1313,
-        "geoIndex": 535,
-        "regions": 1892,
-        "itemHeight": 1290,
-        "nodes": 644,
-        "candlestick": 3166,
-        "crossStyle": 466,
-        "edges": 369,
-        "links": 3277,
-        "layout": 846,
-        "barBorderColor": 721,
-        "barBorderWidth": 498,
-        "treemap": 3865,
-        "y": 367,
-        "valueIndex": 704,
-        "showLegendSymbol": 482,
-        "mapValueCalculation": 492,
-        "optionToContent": 264,
-        "handleColor": 187,
-        "handleSize": 271,
-        "showContent": 1853,
-        "angleAxisIndex": 406,
-        "endValue": 327,
-        "triggerOn": 1720,
-        "contentToOption": 169,
-        "buttonColor": 71,
-        "rotate": 1144,
-        "hoverLink": 335,
-        "outOfRange": 491,
-        "textareaColor": 58,
-        "textareaBorderColor": 58,
-        "textColor": 60,
-        "buttonTextColor": 66,
-        "category": 336,
-        "hideDelay": 786,
-        "alwaysShowContent": 1267,
-        "extraCssText": 901,
-        "effectType": 277,
-        "force": 1820,
-        "rippleEffect": 723,
-        "edgeSymbolSize": 329,
-        "showEffectOn": 271,
-        "gravity": 199,
-        "edgeLength": 193,
-        "layoutAnimation": 152,
-        "length2": 169,
-        "enterable": 957,
-        "dim": 83,
-        "readOnly": 143,
-        "levels": 444,
-        "textGap": 256,
-        "pixelRatio": 84,
-        "nodeScaleRatio": 232,
-        "draggable": 249,
-        "brushType": 158,
-        "radarIndex": 152,
-        "large": 182,
-        "edgeSymbol": 675,
-        "largeThreshold": 132,
-        "leafDepth": 73,
-        "childrenVisibleMin": 73,
-        "minSize": 35,
-        "maxSize": 35,
-        "sort": 90,
-        "funnelAlign": 61,
-        "source": 336,
-        "nodeClick": 200,
-        "curveness": 350,
-        "areaSelectStyle": 104,
-        "parallelIndex": 52,
-        "initLayout": 359,
-        "trailLength": 116,
-        "boxWidth": 20,
-        "back": 53,
-        "rewind": 110,
-        "zoomToNodeRatio": 80,
-        "squareRatio": 60,
-        "parallelAxisDefault": 358,
-        "checkpointStyle": 440,
-        "nodeWidth": 49,
-        "color0": 62,
-        "layoutIterations": 56,
-        "nodeGap": 54,
-        "color(Array": 76,
-        "<string>)": 76,
-        "repulsion": 276,
-        "tiled": 105,
-        "currentIndex": 145,
-        "axisType": 227,
-        "loop": 97,
-        "playInterval": 112,
-        "borderColor0": 23,
-        "gap": 43,
-        "autoPlay": 123,
-        "showPlayBtn": 25,
-        "breadcrumb": 119,
-        "colorMappingBy": 85,
-        "id": 18,
-        "blurSize": 85,
-        "minOpacity": 50,
-        "maxOpacity": 54,
-        "prevIcon": 12,
-        "children": 21,
-        "shape": 98,
-        "nextIcon": 12,
-        "showNextBtn": 17,
-        "stopIcon": 21,
-        "visibleMin": 83,
-        "visualDimension": 97,
-        "colorSaturation": 56,
-        "colorAlpha": 66,
-        "emptyItemWidth": 10,
-        "inactiveOpacity": 4,
-        "activeOpacity": 4,
-        "showPrevBtn": 19,
-        "playIcon": 26,
-        "ellipsis": 19,
-        "gapWidth": 19,
-        "borderColorSaturation": 10,
-        "handleIcon": 2,
-        "handleStyle": 6,
-        "borderType": 1,
-        "constantSpeed": 1,
-        "polyline": 2,
-        "blendMode": 1,
-        "dataBackground": 1,
-        "textAlign": 1,
-        "textBaseline": 1,
-        "brush": 3
-    };
-    var data = [];
-    for (var name in keywords) {
-        data.push({
-            name: name,
-            value: Math.sqrt(keywords[name])
+            var myChart4 = echarts.init(document.getElementById('echarts4'))
+
+            var maskImage = new Image();
+            var option4 = {
+                series: [ {
+                    type: 'wordCloud',
+                    sizeRange: [10, 100],
+                    rotationRange: [-90, 90],
+                    rotationStep: 45,
+                    gridSize: 2,
+                    shape: 'pentagon',
+                    maskImage: maskImage,
+                    drawOutOfBound: false,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            color: 'red'
+                        }
+                    },
+                    data: data.sort(function (a, b) {
+                        return b.value  - a.value;
+                    })
+                } ]
+            };
+            maskImage.onload = function () {
+                option4.series[0].maskImage
+                myChart4.setOption(option4);
+            }
+            maskImage.src = '/img/apple.jpg';
+            window.onresize = function () {
+                myChart4.resize();
+            }
+            $("#hide1").hide()
+            $("#hide2").hide()
         })
-    }
-
-    var myChart4 = echarts.init(document.getElementById('echarts4'))
-
-    var maskImage = new Image();
-    var option4 = {
-        series: [ {
-            type: 'wordCloud',
-            sizeRange: [10, 100],
-            rotationRange: [-90, 90],
-            rotationStep: 45,
-            gridSize: 2,
-            shape: 'pentagon',
-            maskImage: maskImage,
-            drawOutOfBound: false,
-            textStyle: {
-                normal: {
-                    color: function () {
-                        return 'rgb(' + [
-                            Math.round(Math.random() * 160),
-                            Math.round(Math.random() * 160),
-                            Math.round(Math.random() * 160)
-                        ].join(',') + ')';
-                    }
-                },
-                emphasis: {
-                    color: 'red'
-                }
-            },
-            data: data.sort(function (a, b) {
-                return b.value  - a.value;
-            })
-        } ]
-    };
-    maskImage.onload = function () {
-        option4.series[0].maskImage
-        myChart4.setOption(option4);
-    }
-    maskImage.src = '/position/img/apple.jpg';
-    window.onresize = function () {
-        myChart4.resize();
-    }
+        return false;
+    })
 })

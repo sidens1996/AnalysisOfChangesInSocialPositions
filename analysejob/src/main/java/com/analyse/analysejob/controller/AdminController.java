@@ -10,10 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -25,6 +22,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import static com.analyse.analysejob.util.ControlPython.kill;
+import static com.analyse.analysejob.util.ControlPython.start;
+
 @Controller
 @RequestMapping("admin")
 public class AdminController {
@@ -33,6 +33,7 @@ public class AdminController {
     UserService userService;
     @Resource
     JobService jobService;
+    Process pr;
 
     //登录界面
     @RequestMapping("/login")
@@ -49,11 +50,10 @@ public class AdminController {
     public String validateLogin(User user, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         //验证用户名密码
         User validUser = userService.validateUser(user);
-        if ((validUser != null) && validUser.getRole().equals("管理员")) {
+        if (validUser != null && validUser.getRole().equals("管理员")) {
             HttpSession session = request.getSession();
             session.setAttribute("userMessage", validUser);
             return "redirect:/admin/index";
-
         } else {
             redirectAttributes.addFlashAttribute("errorMessage", true);
             return "redirect:/admin/login";
@@ -73,7 +73,7 @@ public class AdminController {
 
     //用户管理界面
     @RequestMapping("/manageUser")
-    public String manageUser(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "page", required = false) Integer currentPage, Model model) {
+    public String manageUser(@RequestParam(value = "keyword", required = false) String keyword,@RequestParam(value = "page", required = false) Integer currentPage,Model model) {
         User user = new User();
         //获取关键字
         if (keyword == null) {
@@ -88,7 +88,7 @@ public class AdminController {
             currentPage = 1;
         }
         PageRequest request = PageRequest.of(currentPage - 1, 10);
-        Page<User> users = userService.getUsersByKeyword(user, request);
+        Page<User> users = userService.getUsersByKeyword(user,request);
         int totalPages = users.getTotalPages();
         boolean hasPrev = true;
         boolean hasNext = true;
@@ -106,7 +106,7 @@ public class AdminController {
             pages.add(i);
         }
         if (min - 1 >= 2) {
-            pages.add(0, 0);
+          pages.add(0, 0);
         }
         if (totalPages - max >= 2) {
             pages.add(0);
@@ -149,10 +149,9 @@ public class AdminController {
         userService.deleteUsersByIds(uids);
         return "redirect:/admin/manageUser";
     }
-
     //数据管理界面
     @RequestMapping("/manageData")
-    public String manageData(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "page", required = false) Integer currentPage, Model model) {
+    public String manageData(@RequestParam(value = "keyword", required = false) String keyword,@RequestParam(value = "page", required = false) Integer currentPage,Model model) {
         Job job = new Job();
         //获取关键字
         if (keyword == null) {
@@ -222,13 +221,35 @@ public class AdminController {
         return "redirect:/admin/manageData";
     }
 
+    //脚本管理
+    @RequestMapping("/manageScript")
+    public String manageScript(){
+        return "admin/manageScript";
+    }
+
+    //开始脚本
+    @RequestMapping("/scriptBegin")
+    @ResponseBody
+    public String scriptBegin() {
+        pr = start("C:\\Yan\\data\\pycharmDocument\\python-virtualenv\\ScrapySocialPosition\\Scripts/python","C:\\Yan\\data\\pycharmDocument\\python-project\\ScrapySocialPosition/main.py");
+        System.out.println("脚本开始");
+        return "";
+    }
+
+    @RequestMapping("/scriptEnd")
+    @ResponseBody
+    public String scriptEnd() {
+        kill(pr);
+        System.out.println("脚本结束");
+        return "";
+    }
+
     //退出系统
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/admin/login";
     }
-
     //允许前端的string类型转存Date类型
     @InitBinder
     protected void init(HttpServletRequest request, ServletRequestDataBinder binder) {

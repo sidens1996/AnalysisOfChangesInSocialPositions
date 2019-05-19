@@ -11,13 +11,13 @@ public class Job {
     private String job_name = "";
     private String salary;
     private String job_city = "";
-    private String work_years;
-    private String degree_need;
+    private String work_years = "";
+    private String degree_need = "";
     private String tags = "";
     private String job_description;
     private String company_field;
-    private String company_development;
-    private String company_scale;
+    private String company_development = "";
+    private String company_scale = "";
     private Date publish_time;
     private String url;
 
